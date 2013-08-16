@@ -1,0 +1,114 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+
+
+<div id="page">
+<div class="row">
+  <div class="large-8 columns">
+    <h2>{% page_attribute page_title %}</h2>
+    <span id="breadcrumb">{% show_breadcrumb %}</span>
+    <hr />
+    {% placeholder Main_template_content %}
+
+{% block content %}
+{% endblock %}
+    <article>
+      <h3> Orange Insight </h3>
+      <img src="/static/img/orangeInsightBookBG.png" style="float:right;"/>
+          
+      <p>In the process of cleaning up my hard drive I've decided to organize tons of link I've collected over the time. I think that other people will also be interested in the stuff that I've decided is worth reading. Also it'd have an answer to people asking "what should I read?"</p>
+      
+      <h4>Path</h4>
+      <p>
+	For a long time I was struggling to find my purpose and passion in life.
+
+	Finally I've figured it out, and now I know how it's done, so I wanna to share this information with you.
+	</p>
+
+      <p>In this part you will find ideas guide you will find ideas that will help you to:
+	<ul>
+	  <li>Discover your purpose in life</li>
+	  <li>Choose profession that matters to you</li>
+	  <li>Understand how to find your passion</li>
+	  <li>Figure out what do you wanna to do with your life</li>
+	  </ul>
+	</p>
+
+      
+      <h4>Identity</h4>
+      <p>
+	For a long time I was struggling to find my purpose and passion in life.
+Finally I’ve figured it out, and now I know how it’s done, so I wanna to share this information with you.
+	</p>
+      <p>
+	For a long time I was struggling to find my purpose and passion in life.
+Finally I’ve figured it out, and now I know how it’s done, so I wanna to share this information with you.
+      </p>
+      <ul>
+<li>Discover your purpose in life</li>
+<li>Choose profession that matters to you</li>
+</ul>
+      </p>
+<h4>Mastery</h4>
+<p>
+  For a long time I was struggling to find my purpose and passion in life.
+Finally I’ve figured it out, and now I know how it’s done, so I wanna to share this information with you.
+  </p>
+<ul>
+  <li>Discover your purpose in life</li>
+  <li>Choose profession that matters to you</li>
+  <li>Understand how to find your passion</li>
+  <li>Figure out what do you wanna to do with your life</li>
+  </ul>
+</article>
+
+
+
+
+
+
+
+
+</div>
+<div class="large-3 columns">
+  <aside style="margin-bottom:0;">
+    <br/>
+    <br/>
+    <br/>
+    <h5>Get free chapters:</h5>
+    <p>Read the 3rd part of this ebook that contains advices about learning, achieving mastery, and getting into the flow state</p>
+    <!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="http://digital-mind.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=ec535fdd6a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  
+<div class="mc-field-group">
+  <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="your name.."/>
+</div>
+<div class="mc-field-group">
+  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="your email..">
+</div>
+<div id="mce-responses" class="clear">
+  <div class="response" id="mce-error-response" style="display:none"></div>
+  <div class="response" id="mce-success-response" style="display:none"></div>
+</div><div class="clear"><input type="submit" value="Download" name="subscribe" id="mc-embedded-subscribe" class="small button"></div>
+</form>
+</div>
+
+<!-- end mailchimp -->
+  </aside>
+  <aside style="margin-top:0;">
+    <h5 style="color:gray;"> Or buy the full verion: </h5>
+    <p style="color:gray;">(Will be available soon.)</p>
+    <a href="#" class="button" style="background-color:gray; box-shadow:none; top:1;">PayPal</a>
+    </aside>
+
+  </div>        
+</div>
+
+
+</div>
+
+
+{% endblock %}

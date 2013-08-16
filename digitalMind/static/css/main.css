@@ -1,0 +1,182 @@
+* {
+	font-family: "Titillium Web";
+	font-size: 15px;
+	color: #3d454b;
+}
+h2, a {
+    color: black;
+    font-weight: normal;
+    display: inline;
+}
+p {
+	font-family: "Titillium Web";
+	font-size: 15px;
+	color: #3d454b;
+}
+
+h2 {
+	font-family: Lato;
+	font-size: 32px;
+	color: #3d454b;
+	text-shadow: 0 1px rgba(255,255,255,.9);
+}
+
+h3 {
+	font-family: Lato;
+	font-size: 24px;
+	color: #3d454b;	
+    font-weight: normal;
+}
+
+h4 {
+	font-family: Lato;
+	font-size: 24px;
+	font-weight: normal;
+	color: #3d454b;
+}
+aside h5 {
+	font-family: "Titillium Web";
+	font-size: 18px;
+	font-weight: bold;
+	color: #f76300;
+}
+
+header {
+	height: 130;
+	padding: 40px;
+}
+
+article {
+	margin-bottom: 80px;
+}
+
+aside {
+	margin: 50 0 50 0;
+
+}
+.panel {
+	border: 2px solid white;
+	border-radius: 5px;
+}
+aside input {
+	border-radius: 4px;
+}
+#topCallToAction {
+	background-color: #f66303;
+	padding: 10px;
+	text-align:center;
+}
+#topCallToAction .message {
+	font-size: medium;	
+	color: white;
+}
+#topCallToAction p {
+	margin: 0;padding: 0;
+	
+}
+#topCallToAction .button {
+	font-size: 14px;
+	color: #fff;
+	background-color: #ce5504;
+	border-radius: 15px;
+	box-shadow:	0 0 0;
+	padding: 5;
+	text-transform: uppercase;
+	margin: 0;
+	margin-left: 50px;
+	font-weight: normal;
+}
+#bottomCallToAction {
+	text-transform: uppercase;
+	text-align: center;
+	padding: 20px;
+}
+#bottomCallToAction .button {
+	margin: 0;
+	margin-left: 50px;
+}
+#page {
+    background-color: #f6f3ea;
+}
+
+#mainMenu {
+	margin-top: 15px;
+	font-family: "Titillium Web";
+	font-size: 16px;
+	text-transform: uppercase;
+	color: black;
+	
+}
+.selected a {
+	color: #f76300;
+}
+
+#mainMenu ul {
+	margin: 0;
+	padding: 0;
+}
+
+#mainMenu ul li{
+	list-style-type:none;
+	display: inline-block;
+}
+
+#breadcrumb {
+	margin-left: 20px;
+}
+#breadcrumb, #breadcrumb li{
+	list-style-type:none;
+	display:inline-block;
+}
+
+.button {
+	background-color: #f76301;
+	border: 0;
+	border-radius: 5px;
+	box-shadow: 0 5px #d05301;
+}
+.button:hover {
+	background-color: #f76301;
+	box-shadow: 0 4px #d05301;
+	 position:relative;
+    top:1px;
+}
+.button.small {
+	background-color: #f76300;
+	box-shadow: none;
+	font-family: Lato;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	
+}
+
+.button.small:hover {
+	background-color: #f76300;
+	box-shadow: none;
+	font-family: Lato;
+	font-size: 16px;
+	font-weight: normal;
+	color: #fff;
+	top:0px;
+	
+}
+
+#readmore {
+	color: #f76300;
+	float: right;
+}
+
+footer, footer li, footer p {
+background-color: #333a42;
+color: #babfc2;
+}
+footer a {
+	color: #babfc2;
+}
+footer h4 {
+	color: #babfc2;
+	text-transform: uppercase;
+	font-size: medium;
+	font-weight: normal;
+}
