@@ -8,25 +8,20 @@
 <div id="page">
 <div class="row">
   <div class="large-8 columns">
-    <h2>Blog</h2>
+    <h2>Blog{% page_attribute page_title %}</h2>
     <!--<span id="breadcrumb">{% show_breadcrumb %}</span> -->
     <hr />
     {% placeholder Main_template_content %}
+    <!-- THIS inserts the post from zinnia/base.html which inserts it from
+	 _entry_detail_base.html by some black magic-->
 
-    {% if posts %}
+        
 
-        {% for post in posts %}
-        <article>
-            <a href="{{ post.get_absolute_url }}"><h4>{{ post.title }}</h4></a>
-            <p>{% autoescape off %}{{ post.body|truncatewords:"150" }}{% endautoescape %}</p>
-            <a href="{{ post.get_absolute_url }}"><span id="readmore">>>> readmore</span></a>
-        </article>
-        {% endfor %}
+{% block title %}<h3>{{ post.title }}</h3>{% endblock %}
 
 
-    {% else %}
-        <p>There are no posts.</p>
-    {% endif %}
+<p>{% autoescape off %}{{ post.body }}{% endautoescape %}</p>
+
 
 
 </div>
@@ -43,20 +38,18 @@
 	  {% endfor %}
 	  </ul>
 	</div>
-      <hr/>
       </aside>
     <aside>
       <h5>Best posts</h5>
       <ul style="list-style-type:none;">
 	<li><a href="/post/social-engineering-basics.html"><>Social engineering</a></li>
 	<li><a href="/post/neuroscience-ai.html"><>Neuroscience links</a></li>
-
       </ul>
     </aside>
     <aside>
       <div class="panel">
-	<a href="en/products/"><img src="/static/img/insightAd.png"/></a>
-	</div>
+	<img src="/static/img/bookAd.png"
+	     </div>
       </aside>
     </div>        
 </div>
