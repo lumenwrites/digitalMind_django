@@ -180,3 +180,25 @@ footer h4 {
 	font-size: medium;
 	font-weight: normal;
 }
+
+#downArrows{
+    cursor: hand; cursor: pointer;
+}
+#dropdownMenu{
+    margin-top: 10;
+    width: 248;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+}
+#dropdownMenu ul li {
+    font-family: "Titillium Web";
+    list-style-type:none;
+    padding: 10;
+    box-shadow: 1px 1px 2px gray;
+    margin-top: 2px;
+}
+#dropdownMenu ul {
+    margin: 0;
+}

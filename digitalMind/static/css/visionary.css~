@@ -1,0 +1,178 @@
+* {
+	font-family: "Titillium Web";
+	font-size: 15px;
+	margin: 0; padding: 0;
+	color: #a3b8c3;
+
+}
+
+a {
+	color: black;
+    font-weight: normal;
+}
+
+p {
+
+}
+
+h2 {
+	font-family: Lato;
+	font-size: 32px;
+	text-shadow: 0 1px rgba(255,255,255,.9);
+    font-weight: normal;
+}
+
+h3 {
+	font-family: Lato;
+	font-size: 24px;
+	color: #3d454b;	
+    font-weight: normal;
+}
+
+h4 {
+	font-family: Lato;
+	font-size: 24px;
+	font-weight: normal;
+	color: #3d454b;
+}
+
+
+body, html {
+  height: 100%; width: 100%;
+}
+#main {
+	background-color: gray;
+	width: 100%;
+	height: calc(100%);
+	background-image:url('../img/bgs.jpg');	
+
+}
+
+header {
+}
+nav {
+        background: rgba(85,100,107,0.55);
+	    box-shadow: 2px 2px 2px rgba(9,14,18,0.5);
+	        position: relative;
+		}
+
+nav li {
+        display: inline-block;
+	    list-style: none;
+	    }
+.login {
+        border: 1px, rgba(85,100,107,0.55);
+	    background-color: rgba(62,74,80,0.95);
+	        position: absolute;
+		    z-index: 1;
+		        right: -2px; top:25px;
+			    border-top: 0;
+			        height: 100px;
+				    display: none;
+				        
+				        
+				    }
+.login input {
+        color: #a3b8c3;
+	    background-color: rgba(28,33,38,0.8);
+	    
+	        border: 0;
+		    height: 17px;
+		        float: right;
+			
+			}
+#login, #signup {
+        cursor: pointer;
+	    text-decoration: underline;
+	    }
+
+
+#topMenu {
+    background-color: #333339;
+    width:100%; height: 25px;
+    position: absolute;
+    z-index: 1000;
+    }
+
+
+#topMenu {
+	background-color: #333339;
+	width:100%; height: 25px;
+	position: absolute;
+	z-index: 1000;
+}
+
+#left {
+
+	width:50%; height: 100%;
+	float: left;
+	background-color: rgba(85,100,107,0.55);
+}
+#leftMenu {
+	background-color: rgba(28,33,38,0.5);
+	width:25px; height: 100%;
+	float: left;
+}
+#right {
+	width:50%;height: 100%;
+	float: left;	
+}
+	#rightTop {
+		width:100%%;height: 50%;
+		float: left;
+		margin-top: 20px;
+	}
+	#rightBottom {
+		width:100%%;height: 50%;
+		float: left;	
+	}
+		#rightBottomLeft {
+			background-color: rgba(131,145,158,0.83);
+			border: 2px solid #a3b8c3;
+			width:calc(50% - 24px);height: calc(100% - 40px);
+			float: left;
+			padding: 10px;
+		}
+		#rightBottomRight {
+			background-color: rgba(28,33,38,0.5);
+			width:calc(50% - 20px);height: calc(100% - 20px);
+			float: left;		
+			padding: 10px;
+		}
+#text form textarea {
+	height: 100%;
+}
+#nodeTitle {
+	width: 100%;
+}
+#content {
+	width: 100%;
+	height: 200px;
+}
+/*.cke_skin_kama, .cke_browser_webkit, .cke_wrapper, .cke_editor, .cke_contents, .cke_contents iframe {
+height:100% !important;
+}*/
+
+
+#treeView {
+	background-color: blue;
+	width:50%;
+	float: left;	
+}
+#parameters {
+	background-color: silver;	
+	float: left;	
+}
+
+
+
+
+.toolButton {
+	font-size: large;
+	color: white;
+	border: 1px solid white;
+	cursor: pointer; cursor: hand;
+	text-align: center;
+
+	margin-top: 20px;
+}

@@ -25,5 +25,11 @@ url(
 url(
     r'^categories/(?P<slug>[^\.]+).html', 
     'apps.blog.views.view_category', 
-    name='view_blog_category'),                           
+    name='view_blog_category'),
+
+(r'^visionary/', 'visionary.views.visionary'),
+(r'^login/', 'visionary.views.login'),
+(r'^logout/', 'visionary.views.logout'),
+(r'^signup/', 'visionary.views.signup'),
+                           
 ) + urlpatterns
