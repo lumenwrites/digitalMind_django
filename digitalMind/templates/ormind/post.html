@@ -1,0 +1,16 @@
+{% extends "ormind/base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+
+{% block content %}
+	{% include "ormind/sidebar.html" %}
+	
+<div id="content">
+	<article>
+		{% block title %}<h3>{{ post.title }}</h3>{% endblock %}
+	
+		<p>{% autoescape off %}{{ post.body }}{% endautoescape %}</p>	
+	</article>
+</div>
+
+{% endblock %}

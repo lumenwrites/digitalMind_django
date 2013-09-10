@@ -1,0 +1,32 @@
+{% load cms_tags menu_tags sekizai_tags %}
+
+<aside class='sidebar'>
+	<section id="widget_1"> 
+		<h4> Categories </h4>
+		<ul id="categories">
+			{% for category in categories %}
+				<li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+			{% endfor %}		
+<!--			<li> <a href="stream.php">Comics </a></li>
+			<li id="inactive"> Stories </li>
+			<li id="inactive"> Other Stuff</li>
+-->
+		</ul>
+	 </section>
+	 
+    <section id="widget_2"> 
+    	<h4> Top Posts </h4> 
+    	<ul id="categories">
+			<li> <a href="http://digital-mind.co/ormind/post/main-characters.html"> Main Characters </a></li>
+			<li> <a href="http://digital-mind.co/ormind/post/everything.html"> Everything </a></li>
+			<li> <a href="http://digital-mind.co/ormind/post/ideas-t-shirts.html"> Ideas for t-shirts </a></li>
+			<li> <a href="http://digital-mind.co/ormind/post/hopeless.html"> Hopeless </a></li>			
+		</ul>
+    </section>
+    
+    <section id="widget_3"> 
+    	<h4> Insight Ebook </h4>
+    	<div class="image" style="width:148;"><a href="http://digital-mind.co/products/"><img src="/static/ormind/img/ormindBanner.png"/></a></div> 
+    </section>
+    
+</aside>

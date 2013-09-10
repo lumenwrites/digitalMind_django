@@ -1,0 +1,230 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family:'Open Sans';
+    font-style:normal;
+	
+}
+
+body {
+background: #1d1d1d url('../img/bg.jpg');
+color: white;
+	
+}
+
+#main_wrapper{
+	width: 1130px; margin-left: auto; margin-right: auto;
+	background-image: url(../img/orangeBGPattern.png), url(../img/content_wrapper_bg.gif);
+	background-repeat: no-repeat, repeat;
+	background-position-y: -80px; background-size: 100%, auto;
+	padding: 0;
+	
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	padding: 2px;
+}
+.sidebar a {
+	color: black;
+}
+#logo {
+	background-image: url(../img/logo_story.png);
+	background-repeat: no-repeat;
+	background-size: auto 80px;
+	height: 80px;
+	width: 400px;
+	float: left;
+}
+
+#content {
+	min-height: 600px;
+}
+
+#header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding:0; margin:0;
+    height: 80px;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+
+nav {
+	text-align: right;
+	padding-bottom: 4px;
+float: right;
+margin-top: 32px;
+	
+}
+
+nav li, #topNav li {
+	display: inline;
+	margin: 5px 10px 5px 10px;
+	padding: 10px 20px 10px 20px;
+	background-image: url(../img/button.png);
+	background-repeat: no-repeat;
+	color: white;
+
+}
+
+
+
+#currentpage {
+color: black;
+background-image: none;
+background-color: rgba(255,255,255,1);
+width:140px; height: 48px;
+}
+
+.comment {
+	border: 1px solid gray;
+	margin: 5px;
+}
+.comment h5{
+	text-decoration: underline;
+}
+
+#loginSignup {
+	float: right;
+}
+.login {
+	border: 1px, rgba(85,100,107,0.55);
+	background-color: rgba(0,0,0,0.55);
+	position: absolute;
+	z-index: 1;
+	right: -2px; top:15px;
+	height: 100px;
+	width: 220px;
+	display: none;
+	
+	
+}
+.login input {
+	color: #a3b8c3;
+	background-color: rgba(115, 119, 124, 0.8);
+
+	border: 0;
+	height: 17px;
+	float: right;
+
+}
+.login button {
+	float:right;background: white;border: 0;padding: 2px;margin: 2px;
+}
+#login, #signup {
+	cursor: pointer;
+}
+
+h1 {
+	color: fc6908;
+}
+h2 {
+		font-size: 14px;
+		font-weight: normal;
+		color: gray;
+		margin: 0; padding: 0;
+}
+
+
+
+img {
+	margin: 5px;
+}
+
+.sidebar {
+	float: right;
+	width: 20%;
+
+}
+
+article, section {
+	border: 1px solid rgb(94, 94, 94);
+	border-radius: 3;
+	margin: 12px; padding: 5px;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+article {
+	padding: 15px;
+}
+
+article header, article .image {
+	text-align: center;	
+}
+
+
+img {
+    max-width: 95%;
+    height: auto;
+}
+
+#content {
+	width: 80%;
+}
+
+#mainFooter {
+	border-top: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-image:url(../img/footer_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    height: 90;
+}
+
+
+#categories {
+	list-style: none;
+}
+
+#inactive {
+	color: gray;
+}
+
+
+
+
+
+#widget_1 h4, #widget_2 h4, #widget_3 h4 {
+    background-color: rgba(0, 0, 0, 0.6);
+	padding: 8 4 8 4;
+}
+#categories li {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid black;
+    color: black;
+    padding: 4px;
+}
+
+#widget_1, #widget_2 {
+        padding: 0;
+        border: 0;
+
+}
+
+#widget_3 {
+	background-color: rgba(255, 255, 255, 0.08);
+	border-radius: 0;
+	border:1px solid gray;
+	
+}
+#widget_3 p {
+	color: rgb(250, 140, 55);
+}
+h3 {
+	font-family:"Myriad Pro";
+	font-weight: 100;
+}
+#firstWord {
+	font-family:"Myriad Pro";
+	color: rgb(250, 140, 55);
+}
+
+#winner {
+	background-color: rgba(0, 0, 0, 0.6);
+	margin: 12px;
+	padding: 20px;
+}
+
+article ul {
+	list-style-type: none;
+}

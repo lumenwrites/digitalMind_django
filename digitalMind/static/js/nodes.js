@@ -11,17 +11,28 @@
   var  id = 2;
   var parentNode, childNode;
   var isParentSelected = false;
+  var nodeList = new Array();
       
 // CREATE NODE  
 function createTextNode(posX, posY, title, content) {
 		this.nodeId = id;
+		this.posX = posX;
+		this.posY = posY;
+		this.title = title;
+		this.content = content;
+	    var currentNode = this;
+	    this.group = nodeGroup;
+	    this.parent='';
+	    this.child='';
+	    this.nodeId = nodeList.push(currentNode)-1;//new length - 1 to findout id
+
 		title = title+' '+this.nodeId;
 		id++;
 	      var nodeGroup = new Kinetic.Group({
 	        draggable: true
 	      });
-	      this.test = 'test node attribute';
-	      this.content = content;
+	      this.group = nodeGroup;
+
 	      var box1 = new Kinetic.Rect({
 	        x: -50,
 	        y: -25,
@@ -75,8 +86,7 @@ function createTextNode(posX, posY, title, content) {
 	      nodeGroup.add(this.hookPoint);
 	      layer.add(nodeGroup);
 	    
-	    var currentNode = this;
-	    this.group = nodeGroup;
+
 	      
 	    nodeGroup.on('click', function(){
 	        exportText();
@@ -87,8 +97,15 @@ function createTextNode(posX, posY, title, content) {
 
 	        selectedNode = currentNode;
 	        layer.draw();
-
-        })	      
+	    
+        })
+        //save position
+        nodeGroup.on('dragstart dragmove', function(){
+        nodeList[currentNode.nodeId].posX=nodeGroup.getX();
+        nodeList[currentNode.nodeId].posY=nodeGroup.getY();        
+		});
+		
+		
         this.hookPoint.on('click', function(){
 	        if (isParentSelected == false) {
 		        parentNode = currentNode;
@@ -108,7 +125,7 @@ function createTextNode(posX, posY, title, content) {
 
         layer.draw();
         
-        var toplevel = $('#tree1').tree('getNodeById', 1);
+        var toplevel = $('#tree1').tree('getNodeById', 1000);
 		$('#tree1').tree(
 		    'appendNode',
 		    {	
@@ -129,12 +146,7 @@ function createTextNode(posX, posY, title, content) {
 
 
 
-//MAKE NODE BUTTON
-$("#createTextNode").on('click', function(){
-	createTextNode(rectX,rectY, "New Node", "Node content.");
-	exportText();
-});
-//FINISH MAKE NODE BUTTON
+
 
 
 
@@ -143,6 +155,7 @@ $('#content').hide();
 
 //EDIT NODE
 function editNode(node, title, content) {
+//Edit title
 	node.titleText.setText(title);
 	layer.draw();
 	var treeNode = $('#tree1').tree('getNodeById', selectedNode.nodeId);
@@ -153,7 +166,10 @@ function editNode(node, title, content) {
 						content:selectedNode.content
 							
 						});
+	nodeList[node.nodeId].title=title;
+//Edit content						
 	node.content = $('#content').val();
+	nodeList[node.nodeId].content=content;	
 }
 
 
@@ -176,6 +192,8 @@ $('#content').on('change',function(){
 
 //LINK
 function link(parentNode, childNode){
+	//parentNode.child = childNode;
+	//childNode.parent = parentNode;
 	var line = new Kinetic.Line({ 
 								x: 1, 
 								y: 1,
@@ -185,7 +203,7 @@ function link(parentNode, childNode){
 								lineJoin: 'round'
 								});
 
-	line.setPoints([ parentNode.group.getX(), parentNode.group.getY(), childNode.group.getX(), childNode.group.getY() ]);
+	line.setPoints([parentNode.group.getX(), parentNode.group.getY(), childNode.group.getX(), childNode.group.getY() ]);
 	layer.add(line);
 //	line.setPoints([1, 1, 500, 500 ]);
 	parentNode.group.on('dragstart dragmove', function(){
@@ -207,32 +225,40 @@ function link(parentNode, childNode){
 //CREATING NODES
 $(document).ready(function() {
 
-	var node1 = new createTextNode(rectX+50,rectY+80, "Node", "Node content");
-	var node2 = new createTextNode(rectX+100,rectY+160, "Node", "Node content");
-
-	toplevel = $('#tree1').tree('getNodeById', 1);
+	//var node1 = new createTextNode(rectX+50,rectY+80, "Node", "Node content");
+	//var node2 = new createTextNode(rectX+100,rectY+160, "Node", "Node content");
+	//console.log(node1); console.log(nodeList);
+	toplevel = $('#tree1').tree('getNodeById', 1000);
 	$('#tree1').tree('openNode',toplevel,true);
 	//link(node1,node2);
 	
 });
 //FINISH CRETING NODES
 
+//MAKE NODE BUTTON
+$("#createTextNode").on('click', function(){
+	var toCreate = new createTextNode(rectX,rectY, "New Node", "Node content.");	
+	exportText();
+});
+//FINISH MAKE NODE BUTTON
+
 
 var textExport = '';
 //EXPORT TEXT
 function exportText() {
-    var node = $('#tree1').tree('getNodeById', 1);
+    var node = $('#tree1').tree('getNodeById', 1000);
 	for (var i=0; i < node.children.length; i++) {
 		var child = node.children[i];
 		textExport = textExport + '<br/>' + child.name  + '<br/>' + child.content;	
 	}	
 	CKEDITOR.instances['editor1'].setData(textExport);
 	textExport = '';
+	return textExport;
     
 };
 
 var textExport = '';
-	//EDITING TREE
+//EDITING TREE
 	$('#tree1').bind(
     'tree.click',
 	function(event) {
@@ -241,3 +267,39 @@ var textExport = '';
 	//FINISH EDITING TREE
 
 //FINISH EXPORT TEXT
+
+//SAVE/LOAD STATE
+var treeData;
+var toplevel;
+function state(){
+	
+}
+var stateToSave
+
+
+
+function saveState(){
+
+	//toplevel = $('#tree1').tree('getNodeById', 1);
+	//treeData = toplevel.getData();
+	//console.log(treeData);
+	stateToSave = JSON.stringify(nodeList);
+	$.post("/saveState/", 'state='+stateToSave);
+	
+	return 	stateToSave
+}
+
+$("#saveStateButton").on('click', function(){
+	console.log(saveState());
+});
+//function loadState(){
+//// $('#tree1').tree('loadData', treeData, toplevel);
+//length = nodeList.length;
+//nodesToCreate=nodeList;
+//nodeList = [];
+//for(var i = 0; i < length; i++){
+//	createTextNode(nodesToCreate[i].posX,nodesToCreate[i].posY, nodesToCreate[i].title, nodesToCreate[i].content);
+//};
+ 
+//}
+//FINISH SAVE/LOAD STATE

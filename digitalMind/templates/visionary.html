@@ -38,10 +38,13 @@
 	      <li style="float:right; margin-right:4px;">
 	      <span>{{message}}</span>		
 	      {% if signedin %}
+	      <button id="saveStateButton">save</button>
+	      <button id="loadStateButton">load</button>
+<!--   	      <a href="/loadState/" class="button">load</a> -->
 	      <span style="margin:0 20px;">click <a href="/logout/">here</a> to logout.</span>
 	      {% else %}
 		
-	      <!--<span id="gray" >To save changes </span>-->
+	    <span id="gray" >To save changes </span>
 		<span id="signup" >Signup</span>
 		<span id="gray" > or </span>
 		<span id="login">Login</span></li>
@@ -125,7 +128,7 @@
 <script>
 var data = [
 	{    
-		id: 1,
+		id: 1000,
 		label: 'toplevel',
 		name: 'toplevel',
         children: [	
@@ -163,18 +166,25 @@ stage.add(layer);
 
 
 
-<script src="js/nodeGraph/mootoolsCore.js"></script>
-<script src="js/nodeGraph/mootoolsMore.js"></script>
-<script src="js/nodeGraph/easel.js"></script>
-<script src="js/nodeGraph/NodeGraph.js"></script>
-<script src="js/nodeGraph/NodeGraph.NodeList.js"></script>
-<script src="js/nodeGraph/NodeGraph.Types.js"></script>
-<script src="js/nodeGraph/vector.js"></script>
-
 
 
 <script>
-
+var toParse='{{state|safe}}';
+var parse = JSON.parse('{{state|safe}}')
+var nodeList;
+function loadState(){
+// $('#tree1').tree('loadData', treeData, toplevel);
+	length = parse.length;
+	nodesToCreate=parse;
+	nodeList = [];
+	for(var i = 0; i < length; i++){
+			var toCreate = new createTextNode(nodesToCreate[i].posX,nodesToCreate[i].posY, nodesToCreate[i].title, nodesToCreate[i].content);
+			console.log(toCreate); console.log(nodeList);
+};
+}
+$("#loadStateButton").on('click', function(){
+	console.log(loadState());
+});
 
 </script>
           {% render_block "js" %}

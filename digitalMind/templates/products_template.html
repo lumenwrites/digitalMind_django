@@ -104,9 +104,16 @@ It contains ideas and methods that I’ve learned and developed, and now wanna t
 <!-- end mailchimp -->
   </aside>
   <aside style="margin-top:0;">
-    <h5 style="color:gray;"> Or buy the full verion: </h5>
-    <p style="color:gray;">(Will be available soon.)</p>
-    <a href="#" class="button" style="background-color:gray; box-shadow:none; top:1;">PayPal</a>
+    <h5>Or buy the full verion:</h5>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="W6UMF45VK4BEQ">
+      <input type="submit" class="button" border="0" name="submit"
+	     value="PayPal"
+	     style="box-shadow:none; top:1;">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
     </aside>
 
   </div>        

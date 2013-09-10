@@ -1,0 +1,75 @@
+{% load cms_tags menu_tags sekizai_tags %}
+<html>
+
+	<head>
+	
+		<title>Ormind</title>
+		
+		<!-- load jquery -->
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script> 
+		
+		<!-- load my css and scripts -->
+		<link rel="stylesheet" href="/static/ormind/css/style.css"/>
+		<script src="/static/ormind/js/script.js"></script>
+
+</head>
+<body>
+<div id="main_wrapper">
+<div id="header">
+
+  <header>
+	<div id="logo"></div>
+  </header>
+
+  <nav id="mainMenu">
+		<ul>
+
+			<li> <a href="http://digital-mind.co/ormind/"> Blog </a> </li>
+			<li> <a href="http://digital-mind.co/products/"> Book </a> </li>
+			<li> <a href="http://digital-mind.co/"> Digital Mind </a> </li>
+		</ul>
+	</nav>
+</div>
+
+{%block content%}{%endblock%}
+
+
+<footer id="mainFooter">
+	
+		<a href="http://digital-mind.co/">
+		<img src="/static/ormind/img/digitalMindLogo.png" style="float:left;margin:0;padding:0;width: 240px;margin-left: 20;" />
+		</a>
+
+		<div id="getInTouch" style="margin:15;">
+		<a href="https://plus.google.com/u/0/116534814104943207126/">
+		<span style="	float:right;
+						margin:2;
+						padding:0;
+						background-image:url(/static/ormind/img/icons.png);
+						width:28;height:28;
+						background-position: 28px 0px;
+						overflow:hidden;
+						">
+			
+		</span></a>
+		
+		<a href="https://www.facebook.com/raymest.alez">
+		<span style="	float:right;
+						margin:2;
+						padding:0;
+						background-image:url(/static/ormind/img/icons.png);
+						width:28;height:28;
+						background-position: 60px 0px;
+						overflow:hidden;
+						">
+			
+		</span></a>
+	
+	
+			<img src="/static/ormind/img/getInTouch.png" style="float:right;margin:10;padding:0;" />
+	
+</footer>
+
+</div>
+</body>
+</html>

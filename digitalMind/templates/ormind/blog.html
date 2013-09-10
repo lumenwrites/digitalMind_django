@@ -1,0 +1,100 @@
+{% extends "ormind/base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+
+{% block content %}
+{% include "ormind/sidebar.html" %}
+<div id="content">
+
+{% if posts %}
+	{% for post in posts %}
+		<article>
+			<header> <h4> {{ post.title }} </h4></header> 
+			<p>{% autoescape off %}{{ post.body|truncatewords:"150" }}{% endautoescape %}				</p>	
+			<a href="{{ post.get_absolute_url }}"><span id="readmore">>>> readmore</span></a>
+		
+		
+	
+	<!--<footer>
+			<p class="commentsTitle">Comments(3)</p>
+			<div class="commentsSection">
+			<div class="comment">
+		
+				<h5>Nickname</h5>
+				<p>post</p>	
+				
+			</div>	
+	
+			<form action="functions/submitComment.php" method="POST">
+				<textarea name="comment" style="width:100%; height:64px;background: rgba(0,0,0,0.1);margin-bottom: 20px;color:white;"></textarea>
+				<input type="hidden" name="imageid" value="<?php echo($imageId); ?>">
+				<input type="submit" name="submit" value="Submit coment!" style="float:right;background: white;border: 0;padding: 2px;margin: 2px;margin-top: -12px;"/>
+				<br/>
+			</form>
+										
+			</div>
+	</footer>-->
+	<!-- /COMMENTS -->		
+		</article>
+	{% endfor %}
+{% else %}
+	<p>There are no posts.</p>
+{% endif %}
+	
+	
+
+	
+		
+		
+	<?php	}?>
+
+</div>
+
+    <script type="text/javascript">
+     $(function(){
+         $('.rateup').click(function(e){
+            e.preventDefault();  
+                     var ratingString = $(this).parent().find('.rating');
+
+            if (ratingString.attr('voted') !== 'up') {
+	            var ratingString = $(this).parent().find('.rating');
+	            var ratingInt = parseInt(ratingString.html(),10);
+	            ratingInt = ratingInt+1;
+	            ratingString.html(ratingInt);
+	            var imgid= ratingString.attr('imageid');
+	            // if you need to then wrap this ajax call in conditional logic
+	            $.post("functions/rateup.php", { rating: ratingInt, imageid: imgid});
+				//alert('rating '+ratingInt+' imageid ' + <?php echo($imageId); ?>)
+				ratingString.removeAttr('voted');				
+				ratingString.attr('voted','up');
+
+
+			}
+         });         
+     });
+     $(function(){
+         $('.ratedown').click(function(e){
+            e.preventDefault();
+            var ratingString = $(this).parent().find('.rating');
+ if (ratingString.attr('voted') !== 'down'){
+            var ratingString = $(this).parent().find('.rating');
+            var ratingInt = parseInt(ratingString.html(),10);
+            ratingInt = ratingInt-1;
+            ratingString.html(ratingInt);
+            var imgid= ratingString.attr('imageid');
+            // if you need to then wrap this ajax call in conditional logic
+            $.post("functions/rateup.php", { rating: ratingInt, imageid: imgid});
+			//alert('rating '+ratingInt+' imageid ' + <?php echo($imageId); ?>)
+							ratingString.removeAttr('voted');				
+				ratingString.attr('voted','down');
+			}
+         });      
+     });
+    </script>
+    
+
+{% endblock %}
+
+
+
+    

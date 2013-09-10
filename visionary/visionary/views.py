@@ -50,8 +50,8 @@ def visionary(request):
     args['form'] = RegisterForm()
 
     state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
+    user_profile = request.user.get_profile()
+    state = user_profile.savedState
     state = state.replace ("\\", "\\\\")
     return render_to_response('visionary.html',
                               {'message':message,
@@ -80,8 +80,8 @@ def login(request):
     args['form'] = RegisterForm()
 
     state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
+    user_profile = request.user.get_profile()
+    state = user_profile.savedState
     state = state.replace ("\\", "\\\\")
     
     return render_to_response('visionary.html',
@@ -130,8 +130,8 @@ def signup(request):
     args['form'] = RegisterForm()
             
     state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
+    user_profile = request.user.get_profile()
+    state = user_profile.savedState
     state = state.replace ("\\", "\\\\")
     
     return render_to_response('visionary.html',
