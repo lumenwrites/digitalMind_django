@@ -24,10 +24,17 @@ class Post(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
-
+    parent = models.ForeignKey('self', blank = True, null = True, related_name="children")
+    
+    class Meta:
+    	verbose_name_plural = "Categories" #correct name in the admin
+    	
     def __unicode__(self):
-        return '%s' % self.title
-
+        return self.title    	
+    
     @permalink
     def get_absolute_url(self):
-        return ('view_blog_category', None, { 'slug': self.slug })
+                if self.parent:
+                		return ('view_blog_category', None, { 'slug': self.slug, 'parent':self.parent.slug })
+                else:
+                        return ('view_blog_category', None, { 'slug': self.slug, 'parent':'main' })

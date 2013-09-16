@@ -1,0 +1,39 @@
+{% extends "base_template.html" %}
+{% block sidebar %} <style type="text/css"> </style> {% endblock %}
+
+{% block content %}
+   <style type="text/css">
+        .pagination { margin-top: 20px; margin-left: -20px; }
+        .title { font-size: 1.4em; margin-top: 0px; padding-left: 4px; }
+        .last { border: 0px; }
+        .title a { text-decoration: none; }
+
+        td { border-bottom: 1px solid #ccc; }
+        #list { border: 1px solid #ccc; width: 700px; }
+        #new_topic { float: right; }
+        #body {height: 400;}
+    </style>
+    <style>
+    	.main .button {box-shadow:	0 0 0; float: right;}
+    </style>
+<div id="page">
+<div class="row">
+  <div class="large-12 columns">
+
+    <div class="main">
+        <div id="reply">
+            <div id="rtitle"><h3>{{ title }}</h3></div><br />
+
+            <form action="{{ action }}" method="POST"> {% csrf_token %}
+                Subject: <input type="text" name="subject" size="60" value="{{ subject }}" /><br />
+                <textarea name="body" id="body"></textarea><br />
+                <input type="submit" value="Submit" id="submit" class="button" />
+            </form>
+
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,3 +1,5 @@
+@import url('http://fonts.googleapis.com/css?family=Titillium+Web:200');
+@import url('http://fonts.googleapis.com/css?family=Lato');
 * {
 	font-family: "Titillium Web";
 	font-size: 15px;
@@ -95,6 +97,15 @@ aside input {
 	margin: 0;
 	margin-left: 50px;
 }
+#frontpageCallToAction {
+	text-transform: uppercase;
+	text-align: center;
+	padding: 20px;
+}
+#frontpageCallToAction .button {
+	margin: 0;
+	margin-left: 50px;
+}
 #page {
     background-color: #f6f3ea;
 }
@@ -166,6 +177,11 @@ aside input {
 	color: #f76300;
 	float: right;
 }
+.readmore {
+	color: #f76300;
+	float: right;
+}
+
 
 footer, footer li, footer p {
 background-color: #333a42;
@@ -201,4 +217,66 @@ footer h4 {
 }
 #dropdownMenu ul {
     margin: 0;
+}
+
+
+.first-word {
+	font-weight: bold;
+}
+.frontpage header {
+	text-align: center;	
+	height: auto;
+	margin: 20;padding: 0;
+	
+}
+.categories header {
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	text-transform: uppercase;	
+	text-align: left;
+
+}
+.categories header h4 {
+	font-size: 20px;
+}
+.categories h5 {
+	font-size: 20px;
+	font-weight: normal;
+}
+#frontpageCategories {
+	background-color: #f6f3ea;
+}
+.frontpage.row h2 {
+	text-align: center;
+}
+.row h2,.row h2 span {
+
+	font-family: Lato;
+	font-size: 25px;
+	color: #3d454b;
+	font-weight: lighter;
+	text-transform: uppercase;
+
+}
+.frontpage.row h2 {
+	text-align: center;
+}
+#frontpageCategories h3 {
+	text-align: center;
+}
+
+.product {
+	margin-top: 20;
+	padding: 20;
+}
+.product h3 {
+	text-transform: uppercase;
+	color:#f76300;
+}
+
+#loginMenu{
+	float: right;
+	margin: 0 10 10 10;
 }

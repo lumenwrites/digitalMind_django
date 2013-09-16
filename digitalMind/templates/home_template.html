@@ -13,11 +13,95 @@
 	        </div>
           <div>
 	        <a href="/post/social-engineering-basics.html"><img width=100% src="/static/img/socialEngineering.png" /></a>
-		    </div>
+		   </div>
 	  </div>
 </div>
+<div id="frontpageCallToAction">
+  <div class="row">
+    <div class="large-12 columns">
+      <span class="message">Want to join our G+ community?</span>
+      <a href="https://plus.google.com/communities/114016511019633130882" class="button">Join Now</a>
+      </div>
+    </div>
+</div>
+<div id="frontpage">
+	<div id="frontpageCategories" >
+		<div class="frontpage row">
+				<header><h2 ><span class="first-word">New</span> posts</h2></header>
+		</div>		
+		<div class="frontpage row categories">
+			<div class="large-4 columns">
+			  <header><a href='/categories/main/ormind.html'><h4>Orange Mind</h4></a></header>
+			  <a href="/post/learning-principles.html"><h5>Learning Principles</h5></a>
+			  <p style="margin:0; height:80;">Here are my favorite principles of learning, ideas that will help you to acquire skill  in the fasters and most efficient way.</p>
+			  <a href="/post/learning-principles.html"><span class='readmore' style="margin-right:20; margin-bottom:20;">read more >></span></a>
+			</div>
+			<div class="large-4 columns">
+			  <header><a href='/categories/main/startup.html'><h4>Startups</h4></a></header>
+			  <a href="/post/inventing-startup-ideas.html"><h5>Inventing Startup Ideas</h5></a>
+			  <p style="margin:0; height:80;">You wanna know how to invent cool startup ideas? There you go. </p>
+			  <a href="/post/inventing-startup-ideas.html"><span class='readmore' style="margin-right:20; margin-bottom:20;">read more >></span></a>
+			</div>
+			<div class="large-4 columns">
+			  <header><a href='/categories/main/tutorials.html'><h4>Tutorials</h4></a></header>
+			  <a href="/post/5-ways-upgrade-your-raspberry-pi.html"><h5>Upgrading Raspberry Pi</h5></a>
+			  <p style="margin:0; height:80;">So, here’s the review of 5 cool ways to improve your Raspberry Pi(upgrade it's case and some hardware):</p>
+			  <a href="/post/5-ways-upgrade-your-raspberry-pi.htmll"><span class='readmore' style="margin-right:20; margin-bottom:20;">read more >></span></a>
+			</div>    
+		</div>
+	</div>  
+	
+	
+	
+		<div class="frontpage row">
+				<header><h2 ><span class="first-word"></span> Updates </h2></header>
+		</div>		
+		<div class="frontpage row categories">
+			<div class="large-4 columns">
+			  <header><a href='/categories/main/ormind.html'><h4>Best posts</h4></a></header>
+			   		<ul style="list-style-type:none;">
+						<li><a href="/post/social-engineering-basics.html"><>Social engineering</a></li>
+						<li><a href="/post/neuroscience-ai.html"><>Neuroscience links</a></li>
+						<li><a href="/post/learning-principles.html"><>Learning Principles</a></li>
+						<li><a href="/post/inventing-startup-ideas.html"><>Inventing Startup Ideas</a></li>
+						<li><a href="/post/5-ways-upgrade-your-raspberry-pi.html"><>Upgrading Raspberry Pi</a></li>
+					</ul>
+			</div>
+			<div class="large-4 columns">
+			  <header><a href='/categories/main/startup.html'><h4>Cool forum threads</h4></a></header>
+			   		<ul style="list-style-type:none;">
+						<li><a href="/thread/3/">Principles of learning [article discussion]</a></li>
+						<li><a href="/thread/2/">Modeling Procedural Gear [tutorial]</a></li>
+						<li><a href="/thread/4/">Inventing Startup Ideas [Article Discussion]</a></li>
+					</ul>
+			</div>
+			<div class="large-4 columns">
+			  <header><a href='http://www.youtube.com/channel/UC_l3Sk5Lu4qmiASeG11VsrA'><h4>New video</h4></a></header>
+			  <iframe width="320" height="240" src="//www.youtube.com/embed/NCE8vyq6lRw" frameborder="0" allowfullscreen></iframe>			
+			  <p>Creating procedural gear in SideFx Houdini.</p>
+			  </div>    
+		</div>
+
+	
+	
+	
+	
+	<div class="row product">
+	      <div class="panel"  style="float:left; margin-right:20;">
+		      <a href="http://digital-mind.co/products/"><img src="/static/img/insightAd.png"/></a>
+		  </div>
+		  <a href='/products'><h3>Orange Insight</h3></a>  
+		      <p>In this short ebook you will find information about how to find your path and meaning in life, how to improve your personality and self image, and how to learn and achieve mastery at what you do.</p>
+   	</div>
+</div>
+
+
 
 <script>
-$("#arrow").remove();
+$(document).ready(function() {
+	$("#arrow").remove();
+	$("#bottomCallToAction").remove();
+	$(".orbit-bullets").remove();
+});
 </script>
 {% endblock %}
