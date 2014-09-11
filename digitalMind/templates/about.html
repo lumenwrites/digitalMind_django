@@ -1,0 +1,151 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+
+{% block base_content %}
+<div id="about"  class="blogPage">
+  <div class="row">
+    <div class="large-2 columns">
+      <img src="/static/img/about_logos.png" id="logos"/>
+    </div>
+    <div class="large-10 columns">
+      <div style="margin-top:40px;">
+        <h1>About <span id="digitalMind">Digital Mind</span></h1>
+        <h2 id="tagline"> Entrepreneurship. Technology. Science. </h2>
+        
+        <p id="boldDescription">My goal is to help inspired creators(makers,
+          hackers, artists, scientists, entrepreneurs) to move forward on their path
+          to mastery, achieve their goals, become amazing at what they love, and
+          create great things.</p>
+        
+        <p>Hi! Welcome to Digital Mind!
+          My name is Ray Alez. I am entrepreneur, programmer and blogger. I am
+          also obsessed with personal development, creativity and science. These
+          are very different fields connected together by my 2 main desires:<br />
+          - to be as clever as I can be and create awesome things.<br />
+          <br />
+          In this blog I will share everything that I will learn on my path, my
+          best insights and ideas that will help you<br />
+          to get better at what you do, achieve your goals and do cool stuff =)
+          
+        </p>
+        <h4>Start by reading articles you’re the most interested in:</h4>
+      </div>
+      
+      <div id="bestArticles">
+        <div class="large-4 columns">
+          
+	      <a href="/post/thinking-tools-how-use-your-mind-solve-challenges">
+	        <img src="/static/img/blog_header/creativeThinkingTools.jpg" alt="Creative thinking tools">
+	      </a>
+          
+	      <a href="/post/thinking-tools-how-use-your-mind-solve-challenges">
+	        <h4>Creative thinking tools</h4>
+	      </a>
+          
+	      <p>In this article you will learn how to use creative thinking tools
+            to invent new ideas, solve challenges, and achieve your goals.</p>
+	      <span class="read-more">
+	        <a class="button small readMore"
+		       href="/post/creative-thinking-tools.html">Read More</a>
+	      </span>
+          
+        </div>
+        
+        <div class="large-4 columns">
+          
+	      <a href="/post/best-startup-books">
+	        <img src="/static/img/blog_header/rework.png" alt="Best startup books">
+	      </a>
+          
+	      <a href="/post/best-startup-books">
+	        <h4>Best startup books</h4>
+	      </a>
+          
+	      <p>This is the collection of my top-favorite best startup books.
+            They're must read for everyone interested in entrepreneurship and business.</p>
+	      <span class="read-more">
+	        <a class="button small readMore"
+		       href="/post/best-startup-books.html">Read More</a>
+	      </span>
+          
+        </div>
+        
+        <div class="large-4 columns">
+          
+	      <a href="/post/artificial-neural-network-tutorial">
+	        <img src="/static/img/blog_header/artificial-neural-networks.png" alt="Entrepreneurhsip quotes">
+	      </a>
+          
+	      <a href="/post/artificial-neural-network-tutorial">
+	        <h4>ANN tutorial</h4>
+	      </a>
+          
+	      <p>This is a series of posts on Artificial Neural Networks.
+            Learn everything you need to know to make basic ANN
+	        - from neuroanatomy to coding it in lisp.</p>
+          
+	      <span class="read-more">
+	        <a class="button small readMore"
+		       href="/post/entrepreneurship-quotes.html">Read More</a>
+	      </span>
+          
+        </div>			
+      </div>
+    </div>
+  </div>    
+
+        
+<!--      <div class="row">
+          <div class="large-3 columns">
+            <h5 class="categories">Essays and Ideas</h5>
+            <p class="category-description">
+              (Philosophy, productivity,
+              personal development, creativity, learning, etc.)
+            </p>
+            <ul>
+              <li><a href="#"><> Creative thinking tools</a></li>
+              <li><a href="#"><> Principles of learning</a></li>
+              <li><a href="#"><> Achieving the flow state</a></li>
+              <li><a href="#"><> Rising guide</a></li>             
+            </ul>
+          </div>
+          
+          <div class="large-3 columns">
+            <h5 class="categories">Entrepreneurship</h5>
+            <p class="category-description">
+              (Startups, online business and making money, creating a
+              company.)
+            </p>
+            <ul>
+              <li><a href="#"><> Best startup books</a></li>
+              <li><a href="#"><> "Work" vs "Play" </a></li>
+              <li><a href="#"><> Do you have what it takes to be
+              entrepreneur? </a></li>
+              <li><a href="#"><> Books to read </a></li>             
+            </ul>              
+          </div>
+          
+          <div class="large-3 columns">
+            <h5 class="categories">Technology</h5>
+            <p class="category-description">
+              (Tutorials about Lisp, AI and Machine Learning, Web Development.)</p>
+            <ul>
+              <li><a href="#"><> Artificial Neural Network tutorial</a></li>
+              <li><a href="#"><> Introduction to Hy - Lisp in python</a></li>
+              <li><a href="#"><> [Upcoming] Derivative</a></li>
+              <li><a href="#"><> [Upcoming] Linear Regression</a></li>             
+            </ul>              
+          </div>
+        </div>
+      -->
+<div class="row" style="height:40px;"></div>
+        
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+

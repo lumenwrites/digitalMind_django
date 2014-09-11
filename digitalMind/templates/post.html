@@ -1,70 +1,32 @@
 {% extends "base_template.html" %}
 {% load cms_tags menu_tags sekizai_tags %}
 
-
-{% block base_content %}
-
-
-<div id="page">
-<div class="row">
-  <div class="large-8 columns">
-    <h2>Blog{% page_attribute page_title %}</h2>
-    <!--<span id="breadcrumb">{% show_breadcrumb %}</span> -->
-    <hr />
-    {% placeholder Main_template_content %}
-    <!-- THIS inserts the post from zinnia/base.html which inserts it from
-	 _entry_detail_base.html by some black magic-->
-
-        
-
-{% block title %}<h3>{{ post.title }}</h3>{% endblock %}
-
-
-<p>{% autoescape off %}{{ post.body }}{% endautoescape %}</p>
-
-
-
-</div>
-  <div class="large-3 columns">
-    <aside>
-      <input type="text" placeholder="search ..." />
-      </aside>
-    <aside>
-      <h5>Categories</h5>
-      <div class="large-12 columns">
-	<ul style="list-style-type:none;" >
-	  {% for category in categories %}
-	  <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-	  {% endfor %}
-	  </ul>
-	</div>
-      </aside>
-    <aside>
-      <h5>Best posts</h5>
-      <ul style="list-style-type:none;">
-	<li><a href="/post/social-engineering-basics.html"><>Social engineering</a></li>
-	<li><a href="/post/neuroscience-ai.html"><>Neuroscience links</a></li>
-      </ul>
-    </aside>
-    <aside>
-      <div class="panel">
-	<a href="http://digital-mind.co/products/"><img src="/static/img/insightAd.png"/></a>
-      </div>
-      </aside>
-    <aside>
-      <a href="http://digital-mind.co/visionary/">Visionary</a>
-    </aside>
-    <aside>
-      <a href="http://rayalez.com/projects.php">Studio</a>
-    </aside>    
-    </div>        
-</div>
-
-
-</div>
-
-
+{% block title %}
+<title> {{ post.title }} - Digital Mind Blog </title>
 {% endblock %}
 
+{% block base_content %}
+<div id="page"  class="postPage">
+  {#{% include 'top_banner.html' %}#}
+  <div class="row">
+    <div class="large-9 columns"> <!-- uncomment to include sidebar -->
+    <!-- <div class="large-12 columns"> -->
+      <h2 id="blog"> Blog </h2>
+      <hr /> 
+      
+      <h1>{{ post.title }}</h1>
+      
+      <p >{% autoescape off %}{{ post.body }}{% endautoescape %}</p>
+      
+      {% include 'post_footer.html' %}
 
+      {# {% include 'top_banner.html' %} #}
 
+      {% include 'post_comments.html' %}
+      
+    </div>
+    {% include 'sidebar.html' %} <!-- Uncomment to include sidebar -->      
+  </div>
+
+</div>    
+{% endblock %}

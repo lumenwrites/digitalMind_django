@@ -1,0 +1,30 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+
+<div id="page"  class="blogPage">
+  {# {% include 'blog_header.html' %} #}
+  <div class="row">
+    <div class="large-8 columns">
+
+      <h2 style="position: relative;top: 10px!important;">Archives</h2>
+      <hr />
+      
+      {% if posts %}
+		  {% for post in posts %}
+	      <a href="{{ post.get_absolute_url }}"><h5>{{ post.title }}</h5></a>
+	      {% endfor %}
+      {% else %}
+	  <p>There are no posts.</p>
+      {% endif %}
+
+      {% for page in numberOfPages %}
+	  <div class="pageLink"><a href="?page={{page}}">{{page}}</a></div>
+	  {% endfor %}
+      
+    </div>
+    {% include 'sidebar.html' %}
+  </div>
+  
+  {% endblock %}

@@ -1,0 +1,143 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block base_content %}
+
+
+<div id="page">
+<div class="row">
+
+	<div class="large-12 columns">
+	<h2 style="position: relative;top: 10px;">{% page_attribute page_title %}</h2>
+    <span id="breadcrumb" style="position: relative;top: 10px;">{% show_breadcrumb %}</span>
+    <hr />
+    
+<h1 style="font-size:28px;font-weight:300;">Do you need help with developing a great online project?</h1>		
+<!--		<h4 style="font-size:16px;color:rgb(64,64,64);">For web and robotics.</h4> -->
+	</div>
+</div>
+<div class="row">
+	<div class="large-4 columns">
+		<h3 style="margin-bottom:0;">Let's create something awesome together</h3>
+		<br />
+		<ul>
+			<li> Websites and applications</li>
+			<li> Python/Django or Lisp</li>
+			<li> AI/ML consultation </li>
+			<li> Cloud Robotics </li>			
+			<li> Entrepreneurship and Startup advice</li>			
+		</ul>
+			<p> I create cool projects for startup companies and individuals. If you have an idea you want to discuss - message me and say hi =) </p>
+
+		</p>
+
+		<!-- mailchimp	
+			<div id="mc_embed_signup">
+			<form action="http://digital-mind.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=ec535fdd6a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			
+			<div class="mc-field-group">
+			<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="enter your email here"
+			style="border-radius: 0;
+			margin: 0;
+			margin: auto;">
+			</div>
+			<div id="mce-responses" class="clear">
+			<div class="response" id="mce-error-response" style="display:none"></div>
+			<div class="response" id="mce-success-response" style="display:none"></div>
+			</div><div class="clear"><input type="submit" value="Get free consultation" 
+			name="subscribe" id="mc-embedded-subscribe" class="small button" 
+			style="width: 100%;
+			border-radius:0!important;">
+			</form>
+			 end mailchimp -->	
+			 	
+<a class="small button" style="width: 100%;	border-radius:0!important;margin-top: -4;" href="#message">Get a free consultation</a>
+		
+<!--		<input type="email" name="email" value="enter your email here" style="margin-bottom:0;">
+
+		<a class="button small" href="http://digital-mind.co/media/mastery.pdf"
+		style="width:100%;border-radius:0;">
+		Read it now!
+		</a> -->
+			
+	</div>
+	<div class="large-8 columns">
+		<div style="margin-top: 10px;">
+			<iframe src="http://player.vimeo.com/video/75840880?portrait=0&byline=0&color=d77617&title=0" width="597" height="336" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		</div>
+	</div>
+</div>
+
+		
+
+<div class="row">
+    <hr />
+  <div class="large-6 columns">
+
+    {% placeholder Main_template_content %}
+
+{% block content %}
+{% endblock %}
+
+		<article id="projectDevelopment">
+	    <h4>Create awesome project</h4>		
+
+		<img src="/static/img/004_signature300x300.png" 
+		style="width:180;float:right; margin:5px;"/>
+				
+			<p>Do you want to make a great project like this one? <br/>
+				Create an awesome blog, or a website for you new company? <br/>
+				Or maybe you have already started something but now just stuck and want to find a way to move forward?</p>
+			<p>I am happy to help you!</p>
+			<ul>
+				<li>Refine your idea and find the right niche.</li>
+				<li>Develop a plan for working on your project.</li>
+				<li>Get useful and valuable advice.</li>
+			</ul>
+			<p>
+			Consultation is completely free. And if we agree to work together - pay only after you're completely happy and satisfied with the result.
+			</p>
+			<p>
+			To get started - send me a message >>>>	</p>			  				
+		</article>
+	</div>
+	<div class="large-6 columns" style="float:left;">	 
+<div id="contact">
+	    <h4 id="message">Send me a message</h4>
+		<form action="http://rayalez.com/contact.php" method="post">
+			<div style="float:left; margin-right:20;">
+				<input type="text" name="cf_email" style="width: 180;box-shadow:none;border-radius:4;background-color: rgb(245, 245, 245); height:40; color:gray; font-size:15;" placeholder="Your e-mail">
+			</div>
+			<div>
+			    <input type="text" name="cf_subject" style="width:240px;box-shadow:none;border-radius:4;background-color: rgb(245, 245, 245);  height:40; color:gray; font-size:15;" placeholder="Subject">	    
+			</div>
+		    <textarea name="cf_message" 
+		    style="height:340;
+		    margin-top:10;
+		    background-color: rgb(245, 245, 245);
+			resize: none;
+			box-shadow:none;
+			border-radius:4;" placeholder="Tell me about your project or ask a question..."></textarea>
+		    <input type="submit" class="small button" value="Send" style="float:right;width:80;">
+<!--		    <input type="reset" value="Clear"> -->
+		</form>
+  	</div>
+	</div>   
+</div>
+
+
+
+
+</div>
+
+<script>
+$(document).ready(function() {
+    $("#insightReadMore").click(function() {
+        $("#insightToShow").slideToggle();
+        $(this).remove();
+    });
+});
+</script>
+
+
+{% endblock %}

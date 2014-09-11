@@ -2,74 +2,68 @@
 {% load cms_tags menu_tags sekizai_tags %}
 
 {% block base_content %}
+<div id="products">
+  <div class="row">
+    <div class="large-8 columns">
+      <h2>Products</h2>
+      <hr />
+      
+      <article id="insight">
+        <h3> Orange Insight </h3>
+        <img src="/static/img/orangeInsightBookBG.png" id="insightBook"/>
+        
+        <p>In this short ebook you will find information about how to find your path and meaning in life, how to improve your personality and self image, and how to learn and achieve mastery at what you do. It consists of 3 parts:</p>
+        
+        <h4>Path</h4>
+        <p>For a long time I was struggling to find my purpose and passion in
+          life.
 
-
-<div id="page">
-<div class="row">
-  <div class="large-8 columns">
-    <h2>{% page_attribute page_title %}</h2>
-    <span id="breadcrumb">{% show_breadcrumb %}</span>
-    <hr />
-    {% placeholder Main_template_content %}
-
-{% block content %}
-{% endblock %}
-    <article>
-      <h3> Orange Insight </h3>
-      <img src="/static/img/orangeInsightBookBG.png" style="float:right;"/>
+          Finally I've figured it out, and now I know how it's done, so I wanna
+          to share this information with you.</p>
+        
+        <p>In this part you will find ideas guide you will find ideas that will help you to:
           
-      <p>In this short ebook you will find information about how to find your path and meaning in life, how to improve your personality and self image, and how to learn and achieve mastery at what you do. It consists of 3 parts:</p>
-      
-      <h4>Path</h4>
-      <p>
-	For a long time I was struggling to find my purpose and passion in life.
-
-	Finally I've figured it out, and now I know how it's done, so I wanna to share this information with you.
-	</p>
-
-      <p>In this part you will find ideas guide you will find ideas that will help you to:
-	<ul>
-	  <li>Discover your purpose in life</li>
-	  <li>Choose profession that matters to you</li>
-	  <li>Understand how to find your passion</li>
-	  <li>Figure out what do you wanna to do with your life</li>
-	  </ul>
-	</p>
-
-      
-      <h4>Identity</h4>
-      <p>
-	This part contains the information about achieving the deep identity-level change. The advices contained in it are the result of my long, increasingly sucessfull struggle to become a completely different person and to live up to my ideals.
-	</p>
-      <p>
-	It is a huge topic, but I've collected the best isights that I've had over the years about
-      </p>
-      <ul>
-	<li>Changing your identity.</li>
-	<li>Upgrading your self image and developing self esteem.</li>
-      </ul>
-      </p>
+        <p><button class="button" id="insightReadMore">read more >>></button></p>
+        <div id="insightToShow">
+	      <ul>
+	        <li>Discover your purpose in life</li>
+	        <li>Choose profession that matters to you</li>
+	        <li>Understand how to find your passion</li>
+	        <li>Figure out what do you wanna to do with your life</li>
+	      </ul>
+	    </p>
+        
+        
+        <h4>Identity</h4>
+        <p>This part contains the information about achieving the deep
+        identity-level change. The advices contained in it are the result of my
+        long, increasingly sucessfull struggle to become a completely different
+        person and to live up to my ideals.</p>
+        
+        <p>It is a huge topic, but I've collected the best isights that I've had
+	      over the years about</p>
+        
+        <ul>
+	      <li>Changing your identity.</li>
+	      <li>Upgrading your self image and developing self esteem.</li>
+        </ul>
+</p>
 <h4>Mastery</h4>
-<p>
-  In this part you’ll find a collection of advices about learning, achieving your goals and developing mastery.
-It contains ideas and methods that I’ve learned and developed, and now wanna to share with you.
-</p>
-<p>
-  It contains ideas about:
-</p>
+<p>In this part you’ll find a collection of advices about learning, achieving
+  your goals and developing mastery.
+  It contains ideas and methods that I’ve learned and developed, and now wanna
+  to share with you.</p>
+<p>It contains ideas about:</p>
+
 <ul>
   <li>Setting goals and developing habits</li>
   <li>Getting into the flow</li>
   <li>Learning skills</li>
   <li>Optimizing your time</li>
-  </ul>
+</ul>
+</div>  
 </article>
 
-
-<article>
-  <hr />  
-  <a href="http://digital-mind.co/visionary/"><h3> Visionary (in development)</h3></a>
-</article>
 
 
 
@@ -78,49 +72,165 @@ It contains ideas and methods that I’ve learned and developed, and now wanna t
 
 </div>
 <div class="large-3 columns">
-  <aside style="margin-bottom:0;">
-    <br/>
-    <br/>
-    <br/>
-    <h5>Get free chapters:</h5>
-    <p>Read the 3rd part of this ebook that contains advices about learning, achieving mastery, and getting into the flow state</p>
+  <aside style="" id="downloadInsight">
+    <h5>Download it for free:</h5>
+    <p>
+	  Learn how to find your purpose in life, step on your path, develop awesome skills, and achieve mastery.
+    </p>
     <!-- Begin MailChimp Signup Form -->
-<div id="mc_embed_signup">
-<form action="http://digital-mind.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=ec535fdd6a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-  
-<div class="mc-field-group">
-  <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="your name.."/>
-</div>
-<div class="mc-field-group">
-  <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="your email..">
-</div>
-<div id="mce-responses" class="clear">
-  <div class="response" id="mce-error-response" style="display:none"></div>
-  <div class="response" id="mce-success-response" style="display:none"></div>
-</div><div class="clear"><input type="submit" value="Download" name="subscribe" id="mc-embedded-subscribe" class="small button"></div>
-</form>
-</div>
+    <div id="mc_embed_signup">
+      <form action="http://digital-mind.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=ec535fdd6a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        
+        <div class="mc-field-group">
+          <input type="text"
+                 value=""
+                 name="FNAME"
+                 id="mce-FNAME"
+                 placeholder="your name.."/>
+        </div>
+        
+        <div class="mc-field-group">
+          <input type="email"
+                 value=""
+                 name="EMAIL"
+                 class="required email"
+                 id="mce-EMAIL"
+                 placeholder="your email..">
+        </div>
 
-<!-- end mailchimp -->
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <div class="clear">
+          <input type="submit"
+                 value="Download"
+                 name="subscribe"
+                 id="mc-embedded-subscribe"
+                 class="small button"></div>
+      </form>
+    </div>
+    <!-- end mailchimp -->
   </aside>
-  <aside style="margin-top:0;">
-    <h5>Or buy the full verion:</h5>
+
+<!--  <aside style="margin-top:0;">
+    <h5>Or buy the full ebook:</h5>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_s-xclick">
       <input type="hidden" name="hosted_button_id" value="W6UMF45VK4BEQ">
       <input type="submit" class="button" border="0" name="submit"
-	     value="PayPal"
-	     style="box-shadow:none; top:1;">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	         value="PayPal"
+	         id="paypalButton">
+      <img alt="" border="0"
+           src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+           width="1" height="1">
     </form>
+  </aside> -->
+</div>   
 
-    </aside>
-
-  </div>        
+<div class="row">
+  <div class="large-8 columns">
+	<article id="visionary">
+	  <hr />
+	  <a href="http://digital-mind.co/visionary/"><h3>Visionary</h3></a>			
+	  <img src="/static/landing/img/projects/visionary.png" id="visionaryImage"/>
+      Mindmapping tool for creators:
+		<ul>
+		  <li> > Startupers </li>
+		  <li> > Writers</li>
+		  <li> > Inventors</li>
+		  <li> > Any creative person who needs to think a lot, make ideas,
+		  organize and remember information, keep notes. </li>
+		</ul>
+	  <br/>
+		<p>Use it to:</p>
+		<ul>
+		  <li>Generate clever ideas</li>
+		  <li>Organize your information</li>
+		  <li>Develop plans</li>
+		</ul>	
+	</article>
+  </div>
+  
+  <div class="large-3 columns" style="float:left;">	    
+	<hr />
+	<aside>
+	  <h5>Free online verion:</h5>
+	  <a class="button" id="visionaryButton" href="/visionary/">Try it</a>
+	</aside>    
+  </div>   
+  
 </div>
 
+<!-- Webdev Service -->
+<!-- <div class="row">
+   <div class="large-8 columns">
+	 <article id="projectDevelopment">
+	   <hr />
+	   <img src="/static/img/004_signature300x300.png" id="RA-signature"/>			
+	   <a href="http://rayalez.com/"><h3>Project Development</h3></a>			
+       
+	   <p>Do you want to make a great project like this one? <br/>
+		 Create an awesome blog, or a website for you new company? <br/>
+		 Or maybe you have already started something but now just stuck and want
+		 to find a way to move forward?</p>
+	   <p>I am happy to help you!</p>
+	   <ul>
+		 <li>Refine your idea and find the right niche.</li>
+		 <li>Develop a plan for working on your project.</li>
+		 <li>Create a solid website.</li>
+		 <li>Understand the basics of how web works and what you need for online success.</li>
+		 <li>Learn the right mindsets and solid inner-game that will help you
+		 throughout your future endeavors.</li>
+		 <li>And get a lot more of useful and valuable advices.</li>
+	   </ul>
+	   <p>Consultation is completely free. And if we agree to work together - pay
+		 only after you're completely happy and satisfied with the result.</p>
+	 </article>
+   </div>
+   <div class="large-3 columns" id="contactMe">	 
+	 <hr />   
+	 <aside>
+	   <h5>Contact me:</h5>
+	   <a class="button" id="contactButton" href="http://rayalez.com/">Here</a>
+	 </aside>    
+   </div>   
+ </div> -->
+ 
+
+<!-- Ormind -->
+<!--<div class="row">
+  <div class="large-8 columns">
+	<article id="projectDevelopment">
+	  <hr />
+	  <a href="http://ormind.co/">
+        <h3>Ormind: Witty, creative, inspiring comics and posters.</h3>
+      </a>			
+	  <p> Here you can find witty/inspiring images and comics. </p>
+	  <p> And you can get posters with cool quotes to hang on the wall to stay
+	  inspired. </p>
+	</article>
+  </div>
+  <div class="large-3 columns" id="visitOrmind">	 
+	<hr />   
+	<aside>
+	  <h5>Check it out:</h5>
+	  <a class="button" id="visitOrmind" href="http://ormind.co/">Here</a>
+	</aside>    
+  </div>   
+</div> -->
 
 </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  	$("#insightReadMore").click(function() {
+  		$("#insightToShow").slideToggle();
+  		$(this).remove();
+  	});
+  });
+</script>
 
 
 {% endblock %}

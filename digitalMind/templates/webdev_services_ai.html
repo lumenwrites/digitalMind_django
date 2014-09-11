@@ -1,0 +1,317 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+
+{% block head %}
+<!DOCTYPE html>
+
+	<title> Web Development </title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">    
+    <meta property="og:image" content="http://digital-mind.co/media/logo2.png" />
+
+	<link rel="stylesheet" href="/static/landing/css/landing.css" />
+
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+     <script src="/static/landing/js/jquery.min.js"></script>   
+
+
+	<!-- CAROUSEL -->
+	<link rel="stylesheet" href="/static/landing/js/carousel/css/rcarousel.css" />
+{% endblock %}	
+
+{% block base_content %}
+<div id="dev-wrapper">
+<div id="upper-bg">
+<div id="contact">
+<div class="row">
+    <div class="large-4 columns" id="signature">
+    	<img src="/static/landing/img/signature.png" style="width: 220px;" />
+	</div>
+    <div class="large-8 columns">
+      <h1>Web development and internet marketing for <br />
+		BCI, Robotics, and hi-tech companies.</h1>
+    	<h2>Make a perfect website and promote your products!</h2>
+    	<!-- <p>I will help you to start your online business or blog</p> -->
+    	<a href="#message" class="button"> Get a free consultation →</a><!-- ⟶ -->
+    	<!-- <p>or get in touch via email, skype, facebook or google+</p> -->
+    </div>
+</div>
+</div>
+<div id="skills-arrow"></div>
+</div>
+
+
+<!-- SKILLS -->
+
+<div id="skills">
+<div class="row">
+    <div class="large-2 columns" id="skills-brain-logo">
+    	<img src="/static/landing/img/logo2.png"/>
+	</div>
+    <div class="large-10 columns">
+    <div class="row" id="main-skills">
+        <div class="large-6 columns">
+        	<ul>
+	        	<li><> Develop a website </li>
+        		<li><> Beautiful design, powerful features </li>
+        	</ul>
+        </div>
+        <div class="large-6 columns">
+        	<ul>
+        		<li><> Drive traffic and conversions</li>
+        		<li><> Inscrease sales for your products</li>
+	        	<!-- <li><> Python(Django) and lisp</li> -->
+	    	    <!-- <li><> Machine Learning and Data Analysis</li> -->
+    	    </ul>
+        </div>        
+    </div>
+        <div class="row" id="other-skills">
+        	<h2>What I do:</h2>
+        	<p>I help hi-tech companies to create websites, drive traffic to them, <br/>
+              increase conversions, promote and sell their products.
+              <br/>
+              To get started just <a href="#message">message me</a> and say hi =)</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects">
+<div class="row">
+	<h2>Completed Projects</h2>
+	<div id="thumbnails">
+		<!-- <img src="/static/landing/img/projects/01_dm640x360.png"/> -->
+		<!-- <img src="/static/landing/img/projects/visionary.png"/>		 -->
+		<!-- SETUP NICE SLIDER HERE --> 
+		<!-- ORBIT -->
+		<!-- <div id="orbit-projects" data-orbit>
+	    	<div>
+			    <a href="http://digitalmind.io/">
+			    	<img src="/static/landing/img/projects/01_dm640x360.png"/>
+			    </a>
+	    	</div>
+			<div>
+				<a href="http://digitalmind.io/visionary">
+					<img src="/static/landing/img/projects/visionary.png"/>
+				</a>
+			</div>
+			<div>
+				<a href="http://digitalmind.io/artificial-neural-network-tutorial">
+					<img src="/static/landing/img/projects/03_ann640x360.png"/>
+				</a>
+			</div>
+			<div>
+				<a href="http://ormind.co/">
+					<img src="/static/landing/img/projects/04_OM640x360.png"/>
+				</a>
+			</div>			
+			<!-- <div>
+				<a href="http://rayalez.com/art.php">
+					<img src="/static/landing/img/projects/06_art640x360.png"/>
+				</a>
+			</div>				
+			  </div>
+		</div>		 -->
+
+		<!-- Carousel -->
+		
+			<a href="#" id="ui-carousel-next"></a>
+			<a href="#" id="ui-carousel-prev"></a>		
+
+		<div id="container">
+			<div id="carousel">
+				<a href="http://ormind.co/">
+					<img src="/static/landing/img/projects/04_OM640x360.png"/></a>
+			    <a href="http://digitalmind.io/">
+			    	<img src="/static/landing/img/projects/01_dm640x360.png"/></a>
+				<a href="http://digitalmind.io/visionary">
+					<img src="/static/landing/img/projects/visionary.png"/></a>
+				<a href="http://digitalmind.io/artificial-neural-network-tutorial">
+					<img src="/static/landing/img/projects/03_ann640x360.png"/></a>
+				<a href="http://rayalez.com/art.php">
+					<img src="/static/landing/img/projects/06_art640x360.png"/></a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="projects-arrow"></div>
+<div id="description-bg">
+<div class="row">
+<div class="large-12 columns">
+ 	<div id="description">	
+		<div id="description-text">	
+<!-- 			<div id="arrow-left"><</div>
+			<div id="arrow-right">></div> -->
+			<div id="container-desc">
+				<div id="carousel-desc">
+					<div>
+						<h3>Orange Mind</h3>
+						<p> This is my personal blog where I share random thoughts and ideas. <br />
+						Built with wordpress(custom theme).</p>
+					</div>					
+					<div>
+						<h3>Digital Mind</h3>
+						<p>Community of people who are interested in startups, technology and science. <br />
+						Includes blog and forum. Built with django CMS.</p>
+					</div>							
+					<div>
+						<h3>Visionary</h3>
+						<p>  Visionary is an online mindmapping application for creative people.<br/>
+						Built with Django, Postgres, jQuery</p>
+					</div>					
+					<div>
+						<h3>Artificial Neural Network Tutorial</h3>
+						<p>  This is a series of tutorials about machine learning and artificial intelligence that I'm creating. </p>
+					</div>									
+					<div>
+						<h3>Ray Alez Art</h3>
+						<p>My CG portfolio<br />
+						Since the times I was CG artist</p>
+					</div>									
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>	
+</div>	
+</div>
+
+<div id="lower-bg">
+<!-- TESTIMONIALS -->
+<div id="testimonials">
+<div class="row">
+	<div id="quote-icon">
+    	<img src="/static/landing/img/quote-icon.png"/>
+	</div>
+	<p>Not all developers deeply passionate about machine learning like Ray Alez. <br />
+	I have been working with many developers from all around the world, <br />
+	and I strongly believe that Ray Alez is one of the best of them.</p>
+	<hr style="width: 64px; margin: 10px auto;" />
+	<span id="author">Rommy Arella</span>
+	<span id="company">@Candeed Creatives</span>
+</div>
+</div>
+
+<!--<div id="about">
+<div class="row" >
+	<h2>About</h2>
+	<p>Hi! My name is Ray Alez. <br />
+	- Do you want to make a great online project? <br />
+	- Create an awesome blog, or a website for you new company? <br />
+	- Or maybe you have already started something but now just<br />
+	stuck and want to find a way to move forward?<br/>
+	<br/>
+	I am happy to help you!</p>
+	<p>
+	<> Refine your idea and find the right niche.     <br />
+	<> Develop a plan for working on your project.<br />
+	<> Get useful and valuable advice                         <br />
+	</p>
+	<p>
+	Consultation is completely free.
+	And if we agree to work together - pay only after
+	you're completely happy and satisfied with the result.
+	<br />
+	To get started - <a href="#message">send me a message >>>></a><br />
+	</p>
+</div>
+</div> -->
+
+<div id="message">
+<div class="row" >
+    <div class="large-centered columns centered">
+	<h2>Send me a message</h2>
+	<form action="http://rayalez.com/contact.php" method="post">
+		<div id="email">
+			<input type="text" name="cf_email"  placeholder="Your e-mail">
+		</div>
+		<div id="subject">
+		    <input type="text" name="cf_subject" placeholder="Subject">	    
+		</div>
+	    <textarea name="cf_message" 
+	              id="messageContent"
+                  placeholder="Tell me about your project or ask a question..."></textarea>
+	    <input type="submit" class="button" value="Send" id="send">
+	</form>
+	</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- ORBIT -->
+<!-- <script src="/static/landing/js/foundation.min.js"></script>
+<script src="/static/landing/js/foundation/foundation.orbit.js"></script>
+<script src="/static/landing/js/foundation/foundation.clearing.js"></script>      
+<script>
+	$(document).foundation();
+	$(window).load(function() {
+		$('#orbit-projects').orbit({ captions: false, bullets: false});
+	});
+</script> -->
+<script>
+	$(document).ready(function(){
+		$(".home-link").click(function(event){
+			$('header').css('height','40px');
+			$("#main-nav").css("margin-top","10px");
+			$("#title").css("height","50px");		
+			$("#title").css("padding-top","10px");				
+			$('header').find('h1').css('font-size','24px');			
+		});	
+		$(".inner-link").click(function(event){
+			$('header').css('height','20px');
+			$("#main-nav").css("margin-top","0");
+			$("#title").css("height","28px");		
+			$("#title").css("padding-top","2px");				
+			$('header').find('h1').css('font-size','18px');		
+		});
+	});
+</script>
+
+<script src="/static/landing/js/carousel/lib/jquery-1.7.1.js"></script>
+<script src="/static/landing/js/carousel/lib/jquery.ui.core.js"></script>
+<script src="/static/landing/js/carousel/lib/jquery.ui.widget.js"></script>
+<script src="/static/landing/js/carousel/lib/jquery.ui.rcarousel.js"></script>
+<script>
+$(document).ready(function(){
+	jQuery(function($) {
+		$( "#carousel").rcarousel({
+			visible:1,
+			step: 1,
+			width: 640,
+			height: 360
+		});
+
+		$( "#carousel-desc").rcarousel({
+			visible:1,
+			step: 1,
+			width: 640,
+			height: 80			
+		});
+		
+		$( "#ui-carousel-next" )
+			.add( "#ui-carousel-prev" )
+			.hover(
+				function() {
+					$( this ).css( "opacity", 0.7 );
+				},
+				function() {
+					$( this ).css( "opacity", 1.0 );
+				}
+			);					
+	});
+
+	$('#topCallToAction').css('height','4px');
+	$('#topCallToAction').css('padding','0');	
+	$('#topCallToAction').find('.row').remove();
+	$("#bottomCallToAction").remove();
+});	
+</script>
+{% endblock %}

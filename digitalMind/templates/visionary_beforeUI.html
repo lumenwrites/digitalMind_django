@@ -1,0 +1,160 @@
+{% load cms_tags sekizai_tags menu_tags %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">    
+    <title>Visionary</title>
+
+     {% render_block "css" %}
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="/static/visionary/css/main.css">    
+     
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>     
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.6.0.min.js"></script>    
+    <script src="/static/js/tree.jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/jqtree.css">
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/static/visionary/js/jquery.layout.js" type="text/javascript"></script>    
+
+  </head>
+<body>
+
+<div id="main">
+	<div id="topMenu">
+		<nav>
+			<a href="#" id="logo"></a>
+			<ul>
+				<li><a href="http://digital-mind.co">[DM]</a></li>
+				<li><a href="#">File</a></li>
+				<li><a href="#">Edit</a></li>
+				<li><a href="#">About</a></li>	      	      	      
+				<li style="float:right; margin-right:4px;">
+					<span>{{message}}</span>		
+					{#{% if signedin %}#}
+					{% if user.is_authenticated %}
+					<button id="saveStateButton">save</button>
+					<button id="loadStateButton">load</button>
+					<span style="margin:0 20px;">click <a href="/logout/">here</a> to logout.</span>
+					{% else %}
+					<span id="gray" >To save changes </span>
+					<span id="signup" >Signup</span>
+					<span id="gray" > or </span>
+					<span id="login">Login</span>
+				</li>
+			</ul>
+	    
+			<section id="signupForm" class="widget login">
+				<form action="/signup/" method="post">{% csrf_token %}
+					{{form}}
+					<button class="button" type="submit">Sign Up</button>
+				</form>
+			</section>
+
+			<section id="loginForm" class="widget login">
+				<form action="/login/" method="post">{% csrf_token %} 
+					<p>Username:<input type="text" name="username"></p>
+					<p>Password:<input type="password" name="password"></p>
+					<button class="button" type="submit">Login</button>
+				</form>
+			</section>
+					{% endif %}
+		</nav>
+	</div> <!--End topMenu -->
+
+	
+	<div id="left">
+		<div id="leftMenu" style="position:absolute; z-index:10;">
+			<p>..</p>
+			<p>
+				<div class="toolButton" id="createTextNode" style='border-radius:5px; height:25px;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">+</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="deleteTextNode" style='border-radius:5px; height:25px; margin-top:5px;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">-</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="deleteLink" style='border-radius:5px; height:25px; margin-top:5px;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">.</span>
+				</div>
+			</p>			
+		</div>	
+		
+		<div style="position:absolute;z-index:1000000;top:20px;left:30px;">
+			<span id="zoomIn" style="cursor:pointer; color:black;">+</span>
+			<span id="zoomNone" style="cursor:pointer;color:black;">o</span>			
+			<span id="zoomOut"style="cursor:pointer;color:black;">-</span>
+		</div>
+		
+		<div id="nodeContainer" style="width:100%;height:100%;">
+			<div id="container">
+				<canvas>
+				</canvas>
+			</div>
+		</div>
+	</div>
+		
+	<div id="right">
+		<div id="rightTop">		
+			<div id="text">
+<!--					<div id="buttons" style="width:100%;height:25px;"><button id="addNodeDiv" style="cursor:pointer;">Node</button></div>-->
+					<div  contenteditable="true" style="width:100%;height:100%;margin-top:10px;" id="editor"></div>
+			</div>
+		</div>
+		
+		<div id="rightBottom">
+			<div id="rightBottomLeft">
+				<div id="tree">
+					<h4>Tree view</h4>
+					<div id="tree1"></div>
+				</div>
+			</div>
+			
+			<div id="rightBottomRight">
+				<div id="parameters">
+					<form>
+						<h4>Parameters</h4>
+						<input id="showNodeTitle" type="checkbox" checked="true" style="display:none;" />
+						<input id="nodeTitle" type="text" style="display:none;"/>
+						<input id="showNodeContent" type="checkbox" checked="true" style="display:none;"/><span style="display:none;" id="content">Show node content</span>
+						<!--<textarea id="content" style="display:none;"></textarea>-->
+					</form>
+				</div>			
+			</div>
+			
+		</div>	
+	</div>
+
+	
+	<footer>
+	</footer>
+
+</div>
+
+
+<script>
+var toParse = '{{state|safe}}';
+var parse = JSON.parse('{{state|safe}}');
+//var linksParsed = JSON.parse('{{links|safe}}');
+</script>
+<script src="/static/visionary/js/tree.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/data.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/nodes.js" type="text/javascript"></script>    
+<script src="/static/js/nodes.js"></script>
+<script src="/static/visionary/js/editor.js" type="text/javascript"></script>
+<script src="/static/visionary/js/parameters.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/script.js" type="text/javascript"></script>    
+<!--<script src="/static/js/ckeditor/ckeditor.js" type="text/javascript"></script> 
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1', { //now just editor
+    } );
+</script>
+-->
+{% render_block "js" %}
+</body>
+
+</html>

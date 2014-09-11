@@ -4,6 +4,7 @@
 	margin: 0; padding: 0;
 	color: #a3b8c3;
 
+
 }
 
 a {
@@ -40,11 +41,13 @@ h4 {
 body, html {
   height: 100%; width: 100%;
 }
+/*background-image:url('../img/bgs.jpg');	*/
 #main {
 	background-color: gray;
 	width: 100%;
 	height: calc(100%);
-	background-image:url('../img/bgs.jpg');	
+	
+	background-color: #272727;
 
 }
 
@@ -60,8 +63,12 @@ nav li {
         display: inline-block;
 	    list-style: none;
 	    }
+nav li a {
+			color: #a3b8c3;
+			text-decoration: none;
+	    }	    
 .login {
-        border: 1px, rgba(85,100,107,0.55);
+    border: 1px, rgba(85,100,107,0.55);
 	background-color: rgba(62,74,80,0.95);
 	position: absolute;
 	z-index: 1;
@@ -107,6 +114,7 @@ nav li {
 	width:50%; height: 100%;
 	float: left;
 	background-color: rgba(85,100,107,0.55);
+	overflow:scroll;
 }
 #leftMenu {
 	background-color: rgba(28,33,38,0.5);
@@ -128,18 +136,24 @@ nav li {
 	}
 		#rightBottomLeft {
 			background-color: rgba(131,145,158,0.83);
-			border: 2px solid #a3b8c3;
+			background: #3f484b;
+			border: 1px solid #a3b8c3;
 			width:calc(50% - 24px);height: calc(100% - 40px);
 			float: left;
 			padding: 10px;
 		}
 		#rightBottomRight {
 			background-color: rgba(28,33,38,0.5);
+			background: #3f484b;
 			width:calc(50% - 20px);height: calc(100% - 20px);
 			float: left;		
 			padding: 10px;
+			border: 1px solid #a3b8c3;			
 		}
 #text form textarea {
+	height: 100%;
+}
+#text {
 	height: 100%;
 }
 #nodeTitle {
@@ -160,10 +174,21 @@ height:100% !important;
 	float: left;	
 }
 #parameters {
-	background-color: silver;	
-	float: left;	
+	float: left;
 }
-
+#parameters h4 {
+	font-size: 16px;
+	margin: 0; padding: 0;
+	margin-bottom: 10px;
+	color: #a3b8c3;	
+}
+textarea {
+	background: #272727;
+}
+input {
+	background-color: #272727;
+	border: 0px solid gray;
+}
 
 
 
@@ -176,3 +201,64 @@ height:100% !important;
 
 	margin-top: 20px;
 }
+
+#editor {
+	width: 100%;
+	height: 100%;
+	height: calc(100% - 25px);
+	color: white;
+
+}
+.editor-btns
+{
+  border-bottom : 1px solid #CCC;
+  padding:5px;
+  background-color: #b5bfc4;
+  margin-top:5px;padding: 0;  
+}
+.editor-btns a
+{
+  text-decoration:none;
+  color:#000;
+  padding:0px 5px;
+  margin:0px 1px;
+  width:10px;
+  float:left;
+  text-align:center;
+}
+.editor-btns a.selected
+{
+  background-color:#FCC772;
+}
+.editor-btns select
+{  
+  margin:0px 1px;
+  float:left;
+}
+.editor {
+	background-color: white;
+	color: white;
+}
+* {
+	color: white;
+}
+
+ul.jqtree-tree .jqtree-title {
+color: #a3b8c3 !important;
+
+}
+
+textarea {
+	border:0;
+	padding: 5px;
+}
+
+.nodeDiv {
+	font-weight: bold;
+}
+.title {
+color: white;
+font-size: 16px;
+font-weight: bold;
+}
+

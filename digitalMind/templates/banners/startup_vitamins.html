@@ -1,0 +1,19 @@
+<aside class="banner">
+  <h5>Get inspiring posters:</h5>
+  <a href="http://www.shareasale.com/u.cfm?d=139216&m=45676&u=872970" onClick="trackOutboundLink(this, 'Outbound Links', 'StartupVitamins'); return false;">
+	<img src="/media/images/sidebar/doWhatMatters.jpg" style="width: 189;" class="vitimage" />
+	<img src="/media/images/sidebar/fuckMediocrity.jpg" style="width: 189;" class="vitimage" />
+	<img src="/media/images/sidebar/getShitDone.jpg" style="width: 189;" class="vitimage" />
+	<img src="/media/images/sidebar/noCompromise.jpg" style="width: 189;" class="vitimage" />
+  </a>
+  <p>Awesome posters for entrepreneurs <a href="http://www.shareasale.com/u.cfm?d=139216&m=45676&u=872970">here</a>.</p>
+</aside>     
+
+<script>
+  $( document ).ready(function() {
+  $(".vitimage").hide();
+  var divs = $("img.vitimage").get().sort(function(){ 
+  return Math.round(Math.random())-0.5; //so we get the right +/- combo
+  }).slice(0,1);
+  $(divs).show();
+</script>

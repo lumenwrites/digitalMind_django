@@ -2,192 +2,358 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">    
     <title>Visionary</title>
 
      {% render_block "css" %}
     <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="/static/css/visionary.css">    
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/visionary/css/main.css">    
+     
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>     
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.6.0.min.js"></script>    
+    <script src="/static/js/tree.jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/jqtree.css">
     
-    <script src="/static/js/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/static/visionary/js/jquery.layout.js" type="text/javascript"></script>  
     
-    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.6.0.min.js"></script>
     
-<script src="/static/js/script.js"></script>
+    
+    <script> //Analytics
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		
+		ga('create', 'UA-44003603-2', 'digital-mind.co');
+		ga('send', 'pageview');
+	</script>
 
   </head>
 <body>
 
-<div id="main">
 
-	<header>
-
-	</header>
-
-	<div id="topMenu">
-	  <nav>
-	    <a href="#" id="logo"></a>
-	    <ul>
-	      <li><a href="http://digital-mind.co">DigitalMind</a></li>
-
-
-
-	      <li style="float:right; margin-right:4px;">
-	      <span>{{message}}</span>		
-	      {% if signedin %}
-	      <button id="saveStateButton">save</button>
-	      <button id="loadStateButton">load</button>
-<!--   	      <a href="/loadState/" class="button">load</a> -->
-	      <span style="margin:0 20px;">click <a href="/logout/">here</a> to logout.</span>
-	      {% else %}
-		
-	    <span id="gray" >To save changes </span>
-		<span id="signup" >Signup</span>
-		<span id="gray" > or </span>
-		<span id="login">Login</span></li>
-	      </ul>
-	    
-	    <section id="signupForm" class="widget login">
-	      <form action="/signup/" method="post">{% csrf_token %}
-		{{form}}
-		<button class="button" type="submit">Sign Up</button>
-		</form>
-	    </section>
-
-	    <section id="loginForm" class="widget login">
-	      <form action="/login/" method="post">{% csrf_token %} 
-		<p>Username:<input type="text" name="username"></p>
-		<p>Password:<input type="password" name="password"></p>
-		<button class="button" type="submit">Login</button>
-		</form>
-	      </section>
-	    {% endif %}
-	    </nav>
-
-	  </div>
-
-	
-	<div id="left">
-		<div id="leftMenu">
-			<p>..</p>
-			<p><div class="toolButton" id="createTextNode">+</div></p>
-		</div>
-		<div id="container">
-			<canvas>
-			</canvas>
-		</div>
-	</div>
-	
-	<div id="right">
-		<div id="rightTop">		
-			<!--rightTop-->
-			<div id="text">
-					<textarea id="editor1"></textarea>
-			</div>
-		</div>
-		<div id="rightBottom">
-			<div id="rightBottomLeft">
-					<div id="tree1"></div>
-			</div>
-			<div id="rightBottomRight">
-
-				<div id="parameters">
-					<form>
-						<input id="nodeTitle" type="text"/>
-						<textarea id="content"></textarea>
+	<div id="topMenu"  style="z-index:10000;">
+			<nav>
+				<ul>
+					<li><a href="http://digital-mind.co">[DM]</a></li>
+<!--				<li><a href="#">File</a></li>
+					<li><a href="#">Edit</a></li>
+					<li><a href="#">About</a></li>	      	      	      -->		
+<!--						<span>{{message}}</span>-->
+					{% if user.is_authenticated %}
+					<li>
+	<!--					<button id="saveStateButton">save</button> -->
+							{% if user == mapCreator %}
+								<button id="saveData">[Save]</button>
+							{% endif %}
+							<button id="mindmapsButton">[show mindmaps]</button>
+					</li>
+						<span style="margin:0 20px; float:right;">click <a href="/logout/">here</a> to logout.</span>
+						{% else %}
+					<li> <button id="joinNewsletterButton">[ Join newsletter ]</button></li>	
+					<li style="float:right;margin-right:4px;">
+						<span id="gray" >To save changes </span>
+						<span id="signup" >Signup</span>
+						<span id="gray" > or </span>
+						<span id="login">Login</span>
+					</li>
+				</ul>
+		    
+				<section id="signupForm" class="widget login">
+					<form action="/signup/" method="post">{% csrf_token %}
+						{{form}}
+						<button class="button" type="submit">Sign Up</button>
 					</form>
-				</div>			
-			</div>
-		</div>	
+				</section>
+	
+				<section id="loginForm" class="widget login">
+					<form action="/login/" method="post">{% csrf_token %} 
+						<p>Username:<input type="text" name="username"></p>
+						<p>Password:<input type="password" name="password"></p>
+						<button class="button" type="submit">Login</button>
+					</form>
+				</section>
+						{% endif %}
+			</nav>
+	</div> <!--End topMenu -->
+{% if user.is_authenticated %}
+	<div class="ui-layout-north" style="margin-top:20px;z-index:1; background:#3f484b!important;">
+		<div id = "mindmaps" style="margin-top:5px;">
+			<a id="addMap" href="/addmap/"style="font-weight:bold;font-size:20px;margin:5px;float:left;">
+				[<span style="font-weight:bold;font-size:20px;color:#f66303">+</span>]
+			</a>		
+			{% if maps %}
+				{% for map in maps %}
+					<div style="float:left;width:100px;margin:10px 10px 0 10px;text-align:center;">
+					<a href="/map/{{ map.slug }}.html">{{ map.name }}</a>
+					<span id="confirm"><a href="/deletemap/{{ map.slug }}.html">[-]</a></span>
+					<!--[rename]-->
+					</div>
+				{% endfor %}
+			{% else %}
+				<div style="float:left; margin: auto;text-align:center;">There are no mindmaps yet.</div>
+			{% endif %}
+
+		</div>
 	</div>
-	
+{% endif %}
 
-	
-
-	
+	<div class="ui-layout-center" style="background:#3f484b!important;padding:0;margin:0;"></div>
+		<div id="leftMenu" style="position:absolute; z-index:10;">
+			<p>..</p>
+			<p>
+				<div class="toolButton" id="createTextNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					+
+						<div class="tooltip">
+							Create text node.
+						</div>
+					</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="deleteTextNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					-
+						<div class="tooltip">
+							Delete node.
+						</div>
+					</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="deleteLink" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					l
+						<div class="tooltip">
+							Delete Link
+						</div>
+					</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="deleteAll" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					*
+						<div class="tooltip">
+							Delete everything.
+						</div>
+					</span>
+				</div>
+			</p>				
+			<p>
+<!--				<div class="toolButton" id="setParentNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">S</span>
+				</div>
+			</p>				
+			<p>
+				<div class="toolButton" id="parentNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">P</span>
+				</div>
+			</p>					
+			<p>
+				<div class="toolButton" id="unparentNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span style="font-weight:bold;font-size:32px;margin:0;padding:0;position:relative;top:-15px;">U</span>
+				</div>
+			</p>	-->
+			<p>
+				<div class="toolButton" id="createBMC" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					B
+						<div class="tooltip">
+							Create business model canvas
+						</div>
+					</span>
+				</div>
+			</p>
+			<p>
+				<div class="toolButton" id="createDefaultNodes" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					D
+						<div class="tooltip">
+							Create Default Nodes
+						</div>
+					</span>
+				</div>
+			</p>	
+			<p>
+				<div class="toolButton" id="saveImage" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					I
+						<div class="tooltip">
+							Save to image.
+						</div>
+					</span>
+				</div>
+			</p>	
+			<p>
+				<div class="toolButton" id="focusOnNode" style='border-radius:5px; height:25px; margin-top:5px;cursor:pointer;background-color:#f66303;'>
+					<span class="hover" 
+					style="font-weight:bold;;margin:0;padding:0;position:relative;" 
+					title="text for display goes here">
+					F
+						<div class="tooltip">
+							Focus on node.
+						</div>
+					</span>
+				</div>
+			</p>												
+		</div>	
+		
+<!--		<div style="position:absolute;z-index:1000000;top:20px;left:30px;">
+			<span id="zoomIn" style="cursor:pointer; color:black;">+</span>
+			<span id="zoomNone" style="cursor:pointer;color:black;">o</span>			
+			<span id="zoomOut"style="cursor:pointer;color:black;">-</span>
+		</div> -->
+		
+		<div id="nodeContainer" style="width:100%;height:100%;">
+			<div id="container" style="overflow: scroll!important;width: 100%;height: 100%;">
+				<canvas id="canvas">
+				</canvas>
+			</div>
+		</div>
+	</div>
+		
+	<div class="ui-layout-east" id="east" style="background:#3f484b!important;">
+		<div class="ui-layout-center"style="background:#272727!important;">
+			<div id="rightTop">	
+			
+				<div id="text">
+	<!--					<div id="buttons" style="width:100%;height:25px;"><button id="addNodeDiv" style="cursor:pointer;">Node</button></div>-->
+						<div  contenteditable="true" style="width:100%;height:100%;margin-top:0px;" id="editor"></div>
+				</div>
+			</div>
+		</div>
+		<div class="ui-layout-south" id="south" style="background:#3f484b!important;">
+				<div class="ui-layout-west" style="background:#3f484b!important;">
+					<div id="tree">
+						<h4>Tree view</h4>
+						<div id="tree1"></div>
+					</div>
+				</div>
+				
+				<div class="ui-layout-center"style="background:#3f484b!important;">
+					<div id="parameters" >
+						<form>
+							<h4>Parameters</h4>
+							<input id="showNodeTitle" type="checkbox" checked="true" style="display:none;" />
+							<input id="nodeTitle" type="text" style="display:none;"/>
+<!--							<input id="showNodeContent" type="checkbox" checked="true" style="display:none;"/><span style="display:none;" id="content">Show node content</span> -->
+							<p id="element">
+							<input type="checkbox" checked="true" id="c1" name="cc" /><label for="c1"><span class="checkbox"></span>
+							Show node content</label>
+							</p>
+							<!--<textarea id="content" style="display:none;"></textarea>-->
+						</form>
+					</div>			
+				</div>
+		</div>
+	</div>
 	
 	<footer>
-	
-	
 	</footer>
 
 </div>
 
-<script type="text/javascript">
-    CKEDITOR.replace( 'editor1', {
+<div id="subscribeDialog">
+			<div style='z-index:10000;'>To create more than 3 mindmaps - subscribe to the premium version($5/month).
+	        <form action='https://www.paypal.com/cgi-bin/webscr' method='post' target='_top'>
+			<input type='hidden' name='cmd' value='_s-xclick'>
+			<input type='hidden' name='hosted_button_id' value='4XN4LABFASTS6'>
+			<input type='submit' class='button' value='Subscribe' name='submit'
+			style='	margin: 10px 0 0 110px;
+					text-align:center;
+					font-size:20;
+					padding: 10px;'/>
+			<img alt='' border='0' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1'>
+			</form>
+	        </div>
+</div>
 
+<div id="mailingListDialogue">
+			<div style='z-index:10000;'>Currently Visionary is in beta phase. If you want to keep up with  news and updates - join the mailing list:
+				<!-- Begin MailChimp Signup Form -->
+				<div id="mc_embed_signup">
+				<form action="http://digital-mind.us7.list-manage2.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=3a7c32dd08" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					
+				<div class="mc-field-group" style="margin:5px;">
+					<label for="mce-EMAIL">Email Address </label>
+					<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+				</div>
+<!--				<div class="mc-field-group" style="margin:5px;">
+					<label for="mce-FNAME">First Name    </label>
+					<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+				</div> -->
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none"></div>
+						<div class="response" id="mce-success-response" style="display:none"></div>
+					</div>	<div class="clear" style="float:right;"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+				</form>
+				</div>
+				<!--End mc_embed_signup-->
+	        </div>
+</div>
+
+<script>
+var thisMapSlug = "{{ thisMap.slug }}";
+{% if data %}
+	var mindmapDataSaved = JSON.parse('{{data|safe}}');
+{% else %}
+	var mindmapDataSaved = "empty";
+{% endif %}
+
+{% if doLoadNodes %}
+	var doLoadNodes = 1;
+{% else %}
+	var doLoadNodes = 0;
+{% endif %}
+
+{% if user.is_authenticated %}
+	var is_authenticated = 1;
+{% else %}
+	var is_authenticated = 0;
+{% endif %}
+
+var subscription = "{{subscription}}";
+var numberOfUserMaps = {{numberOfUserMaps}};
+
+//var toParse = '{{state|safe}}';
+//var parse = JSON.parse('{{state|safe}}');
+//var linksParsed = JSON.parse('{{links|safe}}');
+
+
+</script>
+<script src="/static/visionary/js/tree.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/data.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/nodes.js" type="text/javascript"></script>    
+<script src="/static/js/nodes.js"></script>
+<script src="/static/visionary/js/editor.js" type="text/javascript"></script>
+<script src="/static/visionary/js/parameters.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/script.js" type="text/javascript"></script>    
+<script src="/static/visionary/js/canvas2image.js" type="text/javascript"></script>    
+<!--<script src="/static/js/ckeditor/ckeditor.js" type="text/javascript"></script> 
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1', { //now just editor
     } );
 </script>
-
-
-<script src="/static/js/tree.jquery.js"></script>
-<link rel="stylesheet" href="/static/css/jqtree.css">
-<script>
-var data = [
-	{    
-		id: 1000,
-		label: 'toplevel',
-		name: 'toplevel',
-        children: [	
-        	]
-    }
-
-];
-$(function() {
-    $('#tree1').tree({
-        data: data,
-        autoOpen: true,
-        dragAndDrop: true,
-    });
-});
-
-</script>
-<script>
-
-</script>
-
-
-<script src="/static/js/nodes.js"></script>
-
-<script>
-stage.add(layer);
-</script>
-
-<script>
-
-
-
-
-</script>
-
-
-
-
-
-
-<script>
-var toParse='{{state|safe}}';
-var parse = JSON.parse('{{state|safe}}')
-var nodeList;
-function loadState(){
-// $('#tree1').tree('loadData', treeData, toplevel);
-	length = parse.length;
-	nodesToCreate=parse;
-	nodeList = [];
-	for(var i = 0; i < length; i++){
-			var toCreate = new createTextNode(nodesToCreate[i].posX,nodesToCreate[i].posY, nodesToCreate[i].title, nodesToCreate[i].content);
-			console.log(toCreate); console.log(nodeList);
-};
-}
-$("#loadStateButton").on('click', function(){
-	console.log(loadState());
-});
-
-</script>
-          {% render_block "js" %}
+-->
+{% render_block "js" %}
 </body>
 
 </html>

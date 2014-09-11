@@ -1,0 +1,25 @@
+{% extends "base_template.html" %}
+
+{% block sidebar %} <style type="text/css"> </style> {% endblock %}
+
+{% block content %}
+
+
+<div class="main">
+  
+  <div id="reply">
+    <div id="rtitle">{{ title }}</div><br />
+    <div class="row">
+		<div class="large-12 columns">    
+          <form action="/forum/submit/" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" class="small button"
+                   style="float:right;"/>
+          </form>
+        </div>
+    </div>        
+  </div>
+  
+</div>
+
+{% endblock %}

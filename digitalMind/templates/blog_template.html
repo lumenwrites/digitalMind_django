@@ -1,75 +1,91 @@
 {% extends "base_template.html" %}
 {% load cms_tags menu_tags sekizai_tags %}
 
-
 {% block base_content %}
 
-
-<div id="page">
+<div id="page"  class="blogPage">
+{#{% include 'blog_header.html' %}#}
 <div class="row">
-  <div class="large-8 columns">
-    <h2>Blog</h2> <!--<span style="font-size:18;margin-left:10;">[Orange Mind]</span>-->
-    <!--<span id="breadcrumb">{% show_breadcrumb %}</span> -->
-    <hr />
-    {% placeholder Main_template_content %}
+    <div class="large-9 columns">
+      <!-- <div style="height:45px;"></div> -->
+        <h2 id="blogTitle"> Blog </h2>
+        <hr />
 
-    {% if posts %}
+        {% if posts %}
+            {% for post in posts %}
+            <article>
+                <a href="{{ post.get_absolute_url }}"><h4>{{ post.title }}</h4></a>
+                <p>{% autoescape off %}{{ post.body|truncatewords:"150" }}{% endautoescape %}</p>
+                <a href="{{ post.get_absolute_url }}"><span id="readmore">>>> readmore</span></a>
+            </article>
+            {% endfor %}
+        {% else %}
+            <p>There are no posts.</p>
+        {% endif %}
+        
+        <!-- Pagination -->
+        {% for page in numberOfPages %}
+    		<div class="pageLink"><a href="?page={{page}}">{{page}}</a></div>
+    	{% endfor %}
 
-        {% for post in posts %}
-        <article>
-            <a href="{{ post.get_absolute_url }}"><h4>{{ post.title }}</h4></a>
-            <p>{% autoescape off %}{{ post.body|truncatewords:"150" }}{% endautoescape %}</p>
-            <a href="{{ post.get_absolute_url }}"><span id="readmore">>>> readmore</span></a>
-        </article>
-        {% endfor %}
-
-
-    {% else %}
-        <p>There are no posts.</p>
-    {% endif %}
-
-
-</div>
-  <div class="large-3 columns">
-    <aside>
-      <input type="text" placeholder="search ..." />
-      </aside>
-    <aside>
-      <h5>Categories</h5>
-      <div class="large-12 columns">
-	<ul style="list-style-type:none;" >
-	  {% for category in categories %}
-	  <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-	  {% endfor %}
-	  </ul>
-	</div>
-      <hr/>
-      </aside>
-    <aside>
-      <h5>Best posts</h5>
-      <ul style="list-style-type:none;">
-	<li><a href="/post/social-engineering-basics.html"><>Social engineering</a></li>
-	<li><a href="/post/neuroscience-ai.html"><>Neuroscience links</a></li>
-
-      </ul>
-    </aside>
-    <aside>
-      <div class="panel">
-	<a href="http://digital-mind.co/products/"><img src="/static/img/insightAd.png"/></a>
-	</div>
-      </aside>
-    <aside>
-      <a href="http://digital-mind.co/visionary/">Visionary</a>
-    </aside>
-        <aside>
-      <a href="http://rayalez.com/projects.php">Studio</a>
-    </aside>
-    </div>        
+        </div>
+{% include 'sidebar.html' %}    
 </div>
 
+<!-- Remove top call to action -->
+<script>
+  $('#topCallToAction').css('height','4px');
+  $('#topCallToAction').css('padding','0');	
+  $('#topCallToAction').find('.row').remove();
 
-</div>
+			$("#mainMenu").find('ul').find('li').find('ul').parent().hover(function(){
+				$("#mainMenu").find('ul').find('li').find('ul').find('li').css("display","block");
+			});	
+			
+			$(".row").hover(function(){
+				$("#mainMenu").find('ul').find('li').find('ul').find('li').css("display","none");
+			});	
+	        
+			$("#mainMenu").find('ul').find('li').find('ul').find('li').hover(function(){
+				$(this).parent().find('li').css("background-color","#222222");		
+				$(this).css("background-color","#f76301");
+			});	
+	        
+			$('#downArrows').on('click',function(){
+				$('#dropdownMenu').slideToggle('fast');
+			});  
+</script>
 
+    <script>
+        $(document).foundation();
+
+        $(window).load(function() {
+			$('#featuredContent').orbit({ captions: false, bullets: false});
+	    });
+    
+	    $(document).ready(function() {
+			$('#topCallToAction').css('height','4px');
+			$('#topCallToAction').css('padding','0');	
+			$('#topCallToAction').find('.row').remove();
+        
+			$("#mainMenu").find('ul').find('li').find('ul').parent().hover(function(){
+				$("#mainMenu").find('ul').find('li').find('ul').find('li').css("display","block");
+			});	
+			
+			$(".row").hover(function(){
+				$("#mainMenu").find('ul').find('li').find('ul').find('li').css("display","none");
+			});	
+	        
+			$("#mainMenu").find('ul').find('li').find('ul').find('li').hover(function(){
+				$(this).parent().find('li').css("background-color","#222222");		
+				$(this).css("background-color","#f76301");
+			});	
+	        
+			$('#downArrows').on('click',function(){
+				$('#dropdownMenu').slideToggle('fast');
+			});
+	    });
+    </script>
 
 {% endblock %}
 

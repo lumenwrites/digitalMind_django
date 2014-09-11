@@ -2533,10 +2533,10 @@ limitations under the License.
       } else {
         key = e.which;
         switch (key) {
-          case DOWN:
-            return moveDown();
-          case UP:
-            return moveUp();
+//          case DOWN:
+//            return moveDown();
+//          case UP:
+//            return moveUp();
           case RIGHT:
             return moveRight();
           case LEFT:

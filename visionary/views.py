@@ -8,9 +8,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from visionary.models import State
+from visionary.models import Mindmap
+from forum.models import UserProfile
 from django.views.decorators.csrf import csrf_exempt
-
-
+from django.contrib.auth.decorators import login_required
+from django.template.defaultfilters import slugify
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label = "Email")
@@ -38,21 +40,24 @@ def save(self, commit=True):
         return user        
 
 
-def visionary(request):
+def visionary_old(request):
     c = {}
     c.update(csrf(request))
     #message = 'this is demo version. signup to be able to save changes.>>>>>'
-    message = 'Signup > '
+    message = ''
     signedin = 0
+    if request.user.is_authenticated():
+        message = ''
             
     args = {}
     args.update(csrf(request))
     args['form'] = RegisterForm()
 
     state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
-    state = state.replace ("\\", "\\\\")
+    #s, created=State.objects.get_or_create(user=request.user)
+    #state = s.state
+    #state = state.replace ("\\", "\\\\")
+    
     return render_to_response('visionary.html',
                               {'message':message,
                                'full_name':request.user.username,
@@ -69,27 +74,22 @@ def login(request):
     
     if user is not None:
         auth.login(request, user)
-        message="You're now logged in"
-        signedin = 1        
+        return HttpResponseRedirect("/visionary/")
     else:
         message="Invalid Username/password."
         signedin = 0
 
-    args = {}
-    args.update(csrf(request))
-    args['form'] = RegisterForm()
+        args = {}
+        args.update(csrf(request))
+        args['form'] = RegisterForm()
 
-    state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
-    state = state.replace ("\\", "\\\\")
     
-    return render_to_response('visionary.html',
+        return render_to_response('visionary.html',
                               {'message':message,
                               'full_name':request.user.username,
                                'signedin':signedin,
                                'form':args['form'],
-                               'state': state,},
+                           },
                               context_instance=RequestContext(request))
 
 
@@ -119,42 +119,35 @@ def signup(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            message="You're now signed up!"
-            signedin = 1
+            new_user = auth.authenticate(username=request.POST['username'],
+                                    password=request.POST['password1'])
+            auth.login(request, new_user)                        
+            return HttpResponseRedirect("/visionary/")
         else:
             message="You're not signed up!"
-            signedin = 0
+            return HttpResponseRedirect("/visionary/")
 
-    args = {}
-    args.update(csrf(request))
-    args['form'] = RegisterForm()
-            
-    state = 'empty'
-    #user_profile = request.user.get_profile()
-    #state = user_profile.savedState
-    state = state.replace ("\\", "\\\\")
-    
-    return render_to_response('visionary.html',
-                              {'message':message,
-                              'full_name':request.user.username,
-                               'signedin':signedin,
-                               'form':args['form'],
-                               'state': state,},
-                              context_instance=RequestContext(request))
 
-@csrf_exempt 
+
+
+
+@csrf_exempt
+@login_required
 def saveState(request):
-    message="Your mindmap is saved!"
-    signedin = 1
-    state = 'empty'
+    message=''
+    signedin=1
+    state = 'empty state test'
+    #links = 'empty links test'
     if request.method == 'POST':
-        state = request.POST['state']
+        state = request.POST['mindmapDataSaved']
+        #links = request.POST['linksSaved']
+        
 
-    user_profile = request.user.get_profile()
-    savedState = user_profile
-    savedState.savedState=state
-    savedState.save()
-    
+    s, created=State.objects.get_or_create(user=request.user)
+    s.state = state
+    #s.links = links
+    s.save()
+
     return render_to_response('visionary.html',
                               {'message':message,
                                'signedin':signedin,
@@ -166,13 +159,154 @@ def loadState(request):
     message="Your mindmap is saved!"
     signedin = 1
     state = 'empty'
-    user_profile = request.user.get_profile()
-    state = user_profile.savedState
+    #links = 'empty'
+    
+    #state = State.objects.get(user=request.user.id).state
+    s, created=State.objects.get_or_create(user=request.user)
+    state = s.state
+    #links = s.links
     state = state.replace ("\\", "\\\\")
+    #links = links.replace ("\\", "\\\\")
     return render_to_response('visionary.html',
                               {'message':message,
                                'signedin':signedin,
-                               'state': state,},
+                               'state': state,
+                               #'links': links,
+                           },
+                              context_instance=RequestContext(request))
+
+
+
+
+
+
+
+
+
+
+
+
+def visionary(request):
+    c = {}
+    c.update(csrf(request))
+            
+    args = {}
+    args.update(csrf(request))
+    args['form'] = RegisterForm()
+    if request.user.is_authenticated():
+        maps = Mindmap.objects.filter(user=request.user)
+        numberOfUserMaps = len(maps)
+        profile = UserProfile.objects.get(user=request.user)
+        subscription = profile.subscription        
+    else:
+        maps = ''
+        subscription = 'none'
+        numberOfUserMaps = 0
+
+    return render_to_response('visionary.html',
+                              {'form':args['form'],
+                               'maps':maps,
+                               'numberOfUserMaps':numberOfUserMaps,
+                               'subscription':subscription,
+                           },context_instance=RequestContext(request))
+    
+    
+
+ 
+def add_map(request):
+    maps = Mindmap.objects.filter(user=request.user)
+    allMaps = Mindmap.objects.all()
+    id = len(allMaps)+1;
+    Mindmap.objects.create(name = "mindmap"+str(id), user=request.user)
+    return HttpResponseRedirect("/map/"+"mindmap"+str(id)+".html")
+    #return HttpResponseRedirect("/visionary/")
+
+        
+def rename_map(request):
+    return render_to_response('visionary.html',{
+                              },context_instance=RequestContext(request))
+        
+
+def delete_map(request, slug):
+    thisMap = Mindmap.objects.get(slug = slug, user=request.user)
+    thisMap.delete()
+    return HttpResponseRedirect("/visionary/")
+    #return HttpResponse("Map to delete: "+d.name)
+
+@csrf_exempt
+@login_required
+def save_map(request,slug):
+    thisMap = Mindmap.objects.get(slug = slug, user=request.user)
+    
+    p = request.POST
+    if p["mindmapDataSaved"]:
+        thisMap.data = p["mindmapDataSaved"]
+        thisMap.save()
+
+    return HttpResponseRedirect("/visionary/")
+
+
+def view_map(request, slug):
+    c = {}
+    c.update(csrf(request))
+            
+    args = {}
+    args.update(csrf(request))
+    args['form'] = RegisterForm()
+
+    if request.user.is_authenticated():
+        maps = Mindmap.objects.filter(user=request.user)
+        doLoadNodes = ""
+        numberOfUserMaps = len(maps);
+        profile = UserProfile.objects.get(user=request.user)
+        subscription = profile.subscription        
+    else:
+        maps = ''
+        doLoadNodes = "true"
+        numberOfUserMaps = 0
+        subscription = "none"
+
+    thisMap = Mindmap.objects.get(slug = slug)#, user=request.user #Checking
+    #only for map name, not for user. Available for everyone. Later add user
+    #check for premium private maps?
+    data = thisMap.data
+    data = data.replace ("\\", "\\\\")
+    data = data.replace ("\'", "\\\'")
+
+    return render_to_response('visionary.html',{'form':args['form'],
+                                                'data':data,
+                                                'maps':maps,
+                                                'thisMap':thisMap,
+                                                'doLoadNodes':doLoadNodes,
+                                                'mapCreator' : thisMap.user,
+                                                'numberOfUserMaps':numberOfUserMaps,
+                                                'subscription':subscription,
+                                            },context_instance=RequestContext(request))
+        
+def view_map_temp(request):
+    #state = State.objects.get(user=request.user.id).state
+    s, created=State.objects.get_or_create(user=request.user)
+    state = s.state
+    state = state.replace ("\\", "\\\\")
+    #links = links.replace ("\\", "\\\\")
+    return render_to_response('visionary.html',
+                              {'message':message,
+                               'signedin':signedin,
+                               'state': state,
+                               #'links': links,
+                           },
                               context_instance=RequestContext(request))
 
  
+def add_subscription(request):
+    profile = UserProfile.objects.get(user=request.user)
+    profile.subscription = "premium"
+    profile.save()
+    return HttpResponseRedirect("/visionary/")
+
+def remove_subscription(request):
+    profile = UserProfile.objects.get(user=request.user)
+    profile.subscription = "none"    
+    profile.save()    
+    return HttpResponseRedirect("/visionary/")
+    

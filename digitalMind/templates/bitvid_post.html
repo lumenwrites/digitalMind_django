@@ -1,0 +1,91 @@
+{% extends "bitvid_base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block head %}
+<!DOCTYPE html>
+
+	<title> Digital Mind </title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">    
+    <meta property="og:image" content="http://digital-mind.co/media/logo2.png" />
+
+	<link rel="stylesheet" href="/static/landing/css/landing.css" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/static/landing/js/jquery.min.js"></script>   
+
+
+	<!-- CAROUSEL -->
+	<link rel="stylesheet" href="/static/landing/js/carousel/css/rcarousel.css" />
+    
+    <!-- JWPlayer -->
+    <script src="http://jwpsrv.com/library/Mk9reu+0EeOMGiIACyaB8g.js"></script>
+
+    <!-- Flowplayer -->
+       <!-- player skin -->
+   <link rel="stylesheet" type="text/css"
+      href="//releases.flowplayer.org/5.4.6/skin/minimalist.css">
+   
+   <style>
+   /* custom player skin */
+   .flowplayer { width: 80%; background-color: #222; background-size: cover; max-width: 800px; }
+   .flowplayer .fp-controls { background-color: rgba(0, 0, 0, 0.4)}
+   .flowplayer .fp-timeline { background-color: rgba(0, 0, 0, 0.5)}
+   .flowplayer .fp-progress { background-color: rgba(77, 87, 100, 1)}
+   .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+   .flowplayer {
+   background-image: url(/static/landing/img/vid3.png)}
+
+   </style>
+
+   <!-- flowplayer depends on jQuery 1.7.1+ -->
+   <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+   <!-- flowplayer javascript component -->
+   <script src="//releases.flowplayer.org/5.4.6/flowplayer.min.js"></script>
+
+{% endblock %}
+
+{% block title %}
+<title> {{ post.title }} - Digital Mind Blog </title>
+{% endblock %}
+
+{% block base_content %}
+<div id="page"  class="postPage">
+  {% include 'banners/bitvid_video.html' %}
+  <div class="row">
+    <div class="large-9 columns"> <!-- uncomment to include sidebar -->
+    <!-- <div class="large-12 columns"> -->
+      <h2 id="blog"> Blog </h2>
+      <hr /> 
+      
+      <h1>{{ post.title }}</h1>
+      
+      <p >{% autoescape off %}{{ post.body }}{% endautoescape %}</p>
+      
+      {% include 'post_footer.html' %}
+
+      {# {% include 'top_banner.html' %} #}
+
+      {% include 'post_comments.html' %}
+      
+    </div>
+    {% include 'sidebar.html' %} <!-- Uncomment to include sidebar -->      
+  </div>
+
+</div>
+
+
+<script>
+  $(document).ready(function() {
+  	$("#arrow").remove();
+  	$("#bottomCallToAction").remove();
+  	$(".orbit-bullets").remove();
+
+  $('#topCallToAction').css('height','4px');
+  $('#topCallToAction').css('padding','0');	
+  $('#topCallToAction').find('.row').remove();
+  
+  });
+</script>
+{% endblock %}

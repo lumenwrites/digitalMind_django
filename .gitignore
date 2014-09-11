@@ -39,4 +39,6 @@ nosetests.xml
 *.pot
 *.pyc
 local_settings.py
- 
+
+settings.py
+settings.py~

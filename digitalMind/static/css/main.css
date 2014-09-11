@@ -1,15 +1,127 @@
+@import url('http://fonts.googleapis.com/css?family=Titillium+Web:400');
 @import url('http://fonts.googleapis.com/css?family=Titillium+Web:200');
 @import url('http://fonts.googleapis.com/css?family=Lato');
+
 * {
 	font-family: "Titillium Web";
 	font-size: 15px;
 	color: #3d454b;
 }
+
 h2, a {
     color: black;
     font-weight: normal;
     display: inline;
 }
+
+#post a, .blogPage a {
+	color: #f76300;
+}
+
+
+
+/* Blog header */
+
+#blogHeader h4 {
+	margin: 20 0 10 0;
+	line-height: 32px;
+}
+
+#blogHeader form {
+    margin-bottom:5px;
+}
+
+#blogHeader #book {
+    position: relative;
+    height: 310px;    
+}
+
+#blogHeader #mce-EMAIL {
+    border-radius: 0;
+	margin: 0;!important
+	margin: auto;    
+}
+
+#blogHeader #mc-embedded-subscribe {
+    width: 100%;
+	border-radius:0!important;
+	margin-bottom:0px;
+    
+    bottom: 0;
+}
+
+#blogHeader #bookDescription {
+    height: 125px;    
+}
+
+
+#blogHeader #imageBanner {
+    margin-top: 25px;
+    border-left: 1px solid rgba(128, 128, 128, 0.32);
+}
+
+
+#bestArticles .readMore {
+    padding: 7 10 7 10;
+	float: right;
+	margin: 0;
+	color: #fd7800;
+	background-color: rgba(255,255,255,0);
+	border: 1px solid rgb(213, 213, 213);
+	font-size: 12px;
+}
+
+#bestArticles h4 {
+    font-size: 17px;
+    margin: 10 0 10 0;
+    font-weight: bold;
+    color: #222222;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+#bestArticles p {
+    margin:0;
+}
+/* End blog header */
+
+/* Videos */
+#videos h4 {
+    font-size: 17px;
+    margin: 10 0 10 0;
+    font-weight: bold;
+    color: #222222;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+/* End Videos */
+#blogTitle {
+	position: relative;
+	top: 10px!important;
+}
+
+.blogPage .pageLink{
+	float: left;
+	margin: 2px;
+	padding: 5px 10px 5px 10px;
+	background: rgba(0,0,0,0.3);
+	border-radius: 3px;
+	margin-bottom: 16px;
+}
+
+.blogPage .pageLink a {
+	color: white;
+}
+
+#categories a, #bestPosts a, #visionary a, .forum a, .button a {
+	color: black;
+}
+
+/* Forum */
+.post-rating {
+    float:right;
+}
+/* Forum End */
+
 p {
 	font-family: "Titillium Web";
 	font-size: 15px;
@@ -36,6 +148,7 @@ h4 {
 	font-weight: normal;
 	color: #3d454b;
 }
+
 aside h5 {
 	font-family: "Titillium Web";
 	font-size: 18px;
@@ -56,56 +169,79 @@ aside {
 	margin: 50 0 50 0;
 
 }
+
 .panel {
 	border: 2px solid white;
 	border-radius: 5px;
 }
+
 aside input {
 	border-radius: 4px;
 }
+
 #topCallToAction {
 	background-color: #f66303;
 	padding: 10px;
 	text-align:center;
 }
+
 #topCallToAction .message {
 	font-size: medium;	
 	color: white;
 }
+
 #topCallToAction p {
 	margin: 0;padding: 0;
 	
 }
+
 #topCallToAction .button {
 	font-size: 14px;
 	color: #fff;
 	background-color: #ce5504;
 	border-radius: 15px;
 	box-shadow:	0 0 0;
-	padding: 5;
-	text-transform: uppercase;
+	padding: 5 8 5 8;
+	/* text-transform: uppercase; */
 	margin: 0;
-	margin-left: 50px;
+	margin-left: 10px;
 	font-weight: normal;
 }
+
 #bottomCallToAction {
 	text-transform: uppercase;
 	text-align: center;
 	padding: 20px;
 }
+
 #bottomCallToAction .button {
 	margin: 0;
 	margin-left: 50px;
 }
+
+#CTAOrange {
+	font-weight: bold;
+	color: #f76301!important;
+}
+
+/* Front Page */
+#featuredContent {
+    max-heigth:300;    
+}
+
 #frontpageCallToAction {
 	text-transform: uppercase;
 	text-align: center;
 	padding: 20px;
 }
+
 #frontpageCallToAction .button {
 	margin: 0;
 	margin-left: 50px;
 }
+
+/* Front Page END */
+
 #page {
     background-color: #f6f3ea;
 }
@@ -116,8 +252,9 @@ aside input {
 	font-size: 16px;
 	text-transform: uppercase;
 	color: black;
-	
+	text-align: right;	
 }
+
 .selected a {
 	color: #f76300;
 }
@@ -132,9 +269,36 @@ aside input {
 	display: inline-block;
 }
 
+#mainMenu ul li ul {
+	position: absolute;
+	/*display: none;*/
+
+	color: white;
+	text-transform: none;
+	text-align: left;
+	width: 80px;
+	z-index: 2000;
+}
+
+#mainMenu ul li ul li {
+	width: 100%;
+	padding: 5px 10px;
+	display: none;
+	background-color: #222222;	
+}
+
+#mainMenu ul li ul li {
+	float: left;
+}
+
+#mainMenu ul li ul a {
+	color: white;
+}
+
 #breadcrumb {
 	margin-left: 20px;
 }
+
 #breadcrumb, #breadcrumb li{
 	list-style-type:none;
 	display:inline-block;
@@ -146,12 +310,14 @@ aside input {
 	border-radius: 5px;
 	box-shadow: 0 5px #d05301;
 }
+
 .button:hover {
 	background-color: #f76301;
 	box-shadow: 0 4px #d05301;
 	 position:relative;
     top:1px;
 }
+
 .button.small {
 	background-color: #f76300;
 	box-shadow: none;
@@ -177,19 +343,23 @@ aside input {
 	color: #f76300;
 	float: right;
 }
+
 .readmore {
 	color: #f76300;
 	float: right;
+    margin-right:20;
+    margin-bottom:20;    
 }
-
 
 footer, footer li, footer p {
-background-color: #333a42;
-color: #babfc2;
+    background-color: #333a42;
+    color: #babfc2;
 }
+
 footer a {
 	color: #babfc2;
 }
+
 footer h4 {
 	color: #babfc2;
 	text-transform: uppercase;
@@ -200,6 +370,12 @@ footer h4 {
 #downArrows{
     cursor: hand; cursor: pointer;
 }
+
+#arrow {
+	position:absolute;
+	bottom:-40;
+	left:90;
+}
 #dropdownMenu{
     margin-top: 10;
     width: 248;
@@ -208,6 +384,7 @@ footer h4 {
     z-index: 1000;
     display: none;
 }
+
 #dropdownMenu ul li {
     font-family: "Titillium Web";
     list-style-type:none;
@@ -215,20 +392,28 @@ footer h4 {
     box-shadow: 1px 1px 2px gray;
     margin-top: 2px;
 }
+
 #dropdownMenu ul {
     margin: 0;
 }
 
+.inSquareBrackets{
+	font-size:12;
+	color:gray;
+}
 
 .first-word {
 	font-weight: bold;
 }
+
 .frontpage header {
 	text-align: center;	
 	height: auto;
 	margin: 20;padding: 0;
+    margin-bottom: 10;
 	
 }
+
 .categories header {
 	margin: 0;
 	padding: 0;
@@ -238,19 +423,34 @@ footer h4 {
 	text-align: left;
 
 }
+
 .categories header h4 {
 	font-size: 20px;
 }
+
 .categories h5 {
 	font-size: 20px;
 	font-weight: normal;
 }
+
+.categories p {
+    margin:0;
+    height:80;
+}
+
+.categories ul {
+    list-style-type:none;
+}
+
+
 #frontpageCategories {
 	background-color: #f6f3ea;
 }
+
 .frontpage.row h2 {
 	text-align: center;
 }
+
 .row h2,.row h2 span {
 
 	font-family: Lato;
@@ -260,9 +460,11 @@ footer h4 {
 	text-transform: uppercase;
 
 }
+
 .frontpage.row h2 {
 	text-align: center;
 }
+
 #frontpageCategories h3 {
 	text-align: center;
 }
@@ -271,6 +473,12 @@ footer h4 {
 	margin-top: 20;
 	padding: 20;
 }
+
+.product .panel {
+    float:left;
+    margin-right:20;
+}
+
 .product h3 {
 	text-transform: uppercase;
 	color:#f76300;
@@ -280,3 +488,256 @@ footer h4 {
 	float: right;
 	margin: 0 10 10 10;
 }
+
+/* Blog Post */
+/* Post Page */
+.postPage .pageLink{
+	float: left;
+	margin: 2px;
+	padding: 5px 10px 5px 10px;
+	background: rgba(0,0,0,0.3);
+	border-radius: 3px;
+	margin-bottom: 16px;
+}
+
+.postPage .pageLink a {
+	color: white;
+}
+
+.postPage h1 {
+    font-family: Lato;
+	font-size: 24px;
+	font-size: 32px;    
+	color: #3d454b;	
+    font-weight: normal;    
+}
+
+.postPage h2 {
+    position: relative;
+    top: 10px!important;
+}
+
+/* Post Page END */
+
+
+/* post_footer.html template */
+.post-footer-signup {
+    border: 1px solid white;
+    border-radius: 2;      
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+    background: rgba(240, 249, 255, 0.32);
+    background: #f2f2f2;
+    height: 50;
+    padding: 8;
+}
+
+.post-footer-signup p {
+    float: left;
+    margin-top: 2!important;
+    font-size: 16px;
+}
+
+.post-footer-signup #mce-EMAIL {
+    width:200;
+	height:30;
+	border: 0;
+	padding: 10;
+	margin: 0 0 0 20px;
+	float:left;					
+	box-shadow: none;
+}
+
+.post-footer-signup #subscribeButton {
+	width: 200;
+	height: 30;
+	margin: 0 0 0 0;					
+	cursor: pointer;
+	font-size: 16;
+	
+	padding: 0;
+	border-radius: 0;
+}
+
+.upcoming {
+    font-weight: normal;
+    color: rgba(61, 69, 75, 0.8);
+}
+/* post_footer.html END */
+
+/* post_comments.html */
+#postComments {
+}
+/* post_comments.html END */
+
+/* Blog Post END */
+
+/* Products */
+#products h2 {
+    position: relative;
+    top: 10px;
+}
+
+#products #insightBook {
+    float:right;
+}
+
+#products #insightReadMore {
+    box-shadow:none;
+    top:1;
+    float:left;
+    padding:5;
+    border-radius:2;    
+}
+
+#products #insightToShow {
+    display:none;
+}
+
+#products #downloadInsight {
+    margin-top:50px;    
+    margin-bottom:0;
+    padding-top: 45px;
+
+}
+
+#products #paypalButton {
+    box-shadow:none;
+    top:1;
+}
+
+#products #visionaryImage {
+    float: left;
+    width: 280px;
+    margin-right: 10px;
+}
+
+#products #RA-signature {
+    width:180;
+    float:right;
+    margin:10px;
+}
+#products #visionaryButton, #products #contactButton, #products #visitOrmind {
+    box-shadow:none;
+    top:1;
+    float:left;
+}
+
+#products aside {
+    margin:0;
+}
+
+#contactMe, visitOrmind {
+    float:left;
+}
+
+/* Products END */
+
+
+/* Sidebar */
+#sidebar #subscribe-mc #mc_embedded-subscribe {
+    width: 100%;
+}
+
+#sidebar #and-get-free-ebook {
+    font-size:10px;
+    margin-top:-15px;
+}
+
+#sidebar #or-follow-me {
+    font-size:13px;
+    margin-top:-15px;
+    margin-bottom:0;
+}
+
+#sidebar #mc_embed_signup #sidebar-mastery-email {
+    background-color:#2e3739;
+}
+
+#sidebar #mc_embed_signup #mce-EMAIL {
+    border-radius: 0!important;
+	margin: 0;
+	width: 200;
+	margin: auto;
+}
+
+#sidebar #mc_embed_signup #mc-embedded-subscribe {
+    width: 100%; 
+    border-radius:0!important;
+	background-color:#2e3739;
+}
+
+#bestArticles{
+    list-style-type: none;
+}
+/* Sidebar END */
+
+
+/* About */
+#about #logos {
+    margin: 50px 40px;
+    float: left;
+    height: 500px;
+}
+
+#about h1 {
+    font-size: 40;
+    font-weight: 300;
+    margin: 0;
+    color: #3d454b;
+    font-family: Lato;    
+}
+
+#about #digitalMind {
+    font-size: 40;
+    font-weight: 500;    
+    color: #3d454b;
+    font-family: Lato;
+}
+
+#about #tagline {
+    font-size: 16px;
+    font-weight: 200;
+}
+
+#about h3 {
+    text-transform:none;
+    margin-top:180px;
+    font-size:18px;
+    margin: 0;
+}
+
+
+#about #boldDescription {
+    font-size: 22px;    
+    font-weight: 500;        
+    font-style: italic;
+    margin-top: 40px;    
+}
+
+#about .categories {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+#about .category-description {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-family: Lato;
+    line-height: 18px;
+    margin-bottom: 10px;    
+}
+
+#about a {
+    color: #3d454b;
+}
+
+#about ul {
+    list-style-type: none;
+}
+/* About END */

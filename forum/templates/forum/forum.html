@@ -1,0 +1,190 @@
+{% extends "base_template.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% load forum_extras %} <!-- load custom filters -->
+
+{% block head %}
+    <script src="/static/js/vote.js"></script>   
+{% endblock head %}
+
+{% block base_content %}
+<style type="text/css">
+  p {
+  margin: 0px;
+  }
+  
+  span.orange {
+  color: #f76301;
+  }
+  
+  #list .button {
+  box-shadow:  0 0 0;
+  }
+  
+  tr {
+  padding: 10px;
+  }
+</style>
+
+      
+<div id="page">
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>
+        {% if categoryTitle %}
+        <a href="/forum/" style="font-size:24px; color:#3d454b;">
+          Forum
+        </a> > {{ categoryTitle }}
+        {% else %}
+        <h3> Forum </h3>
+        {% endif %}
+      </h3>
+
+      {% if user.is_authenticated %}
+      <a id="new_topic" class="small button"
+         style="float: left;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                padding: 5 10 5 10;"
+         href="/forum/submit/">Start New Topic</a>
+      {% endif %}      
+
+      <!-- LOGIN MENU -->
+      <div id="loginMenu" style="margin:10;">
+        
+        {% if user.is_staff %}
+        <a href="{% url "admin:index" %}">Admin</a>
+        {% endif %}
+        
+        {% if user.is_authenticated %}
+        {# <a href="{% url "forum.views.profile user.pk" %}">Edit profile</a>#}
+        {% endif %}      
+        
+        {% if not user.is_authenticated %}
+        <a href="/accounts/login/?next=/forum/">login</a> |
+        <a href="/accounts/register/">signup</a>
+        {% endif %}
+        
+        {% if user.is_authenticated %}
+        <a href="/accounts/logout/?next=/forum/">logout</a>
+        {% endif %}
+      </div>
+      <!-- END MENU -->
+      
+      <div id="list">
+        <table border="0" cellpadding="4" width="100%">
+          <tr style="/* display: none; */">
+            <td style="/* float: right; */
+                       /* text-align: right; */
+                       /* display: none; */">
+              <span style="color: gray;
+                           font-size: 12px;
+                           margin-right: 4px;">Top posts:</span>
+              <a href="/forum/"><span {% if not timespan %}
+                                      class="orange"
+                                      {% endif %}>New</span></a> |
+              <a href="/forum/top/day/">
+                <span {% if timespan = "day" %}
+                      class="orange"
+                      {% endif %}>
+                  Day </span></a>|
+              <a href="/forum/top/month/">
+                <span {% if timespan = "month" %}
+                      class="orange"
+                      {% endif %}>
+                  Month </span></a>|
+              <a href="/forum/top/year/">
+                <span {% if timespan = "year" %}
+                      class="orange"
+                      {% endif %}>
+                  Year </span></a>|
+              <a href="/forum/top/all-time/">
+                <span {% if timespan = "all-time" %}
+                      class="orange"
+                      {% endif %}>
+                  All Time </span></a>|              
+
+              <span style="color: gray;
+                           font-size: 12px;
+                           margin-right: 4px;
+                           margin-left: 10px;
+                           ">Categories:</span>
+              <a href="/forum/">
+                <span {% if not currentCategory %}
+                      class="orange"
+                      {% endif %}>All</span>
+              </a>
+              {% for category in categories %}
+              | <a href="/forum/{{category.slug}}/">
+              <span {% if category = currentCategory %}
+                    class="orange"
+                    {% endif %} >
+                {{category.title}}
+              </span>                
+              </a>
+
+              {% endfor %}
+
+              <!-- Hy Lisp | AI | Entrepreneurship | Robotics | Other -->
+            </td>
+          </tr>
+          
+          <!-- Posts  -->
+          {% for post in posts %}
+          <tr>
+            <td>
+              {% if user.is_authenticated %} {# and post not in liked_posts #}
+              <a id="post-vote-{{ post.id }}"
+                 class="vote-up"                 
+                 {% if post in liked_posts%}
+                 voted = true
+                 style="color:gray;float: left;margin: 4px 0px;font-size:
+                 12px;margin-top: 6px;
+                 color:#f76300;"                 
+                 {% else %}
+                 voted = false
+                 href="/forum/vote-up/"
+                 style="color:gray;float: left;margin: 4px 0px;font-size:
+                 12px;margin-top: 6px;"                 
+                 {% endif %}                 
+                 >▲</a> 
+              <!-- <a href="/forum/vote-down/" -->
+              <!--    id="post-vote-{{ post.id }}"                  -->
+              <!--    class="vote-down"                  -->
+              <!--    style="color:gray;float: left;margin: 4px;font-size: -->
+              <!--    12px;margin-top: 6px;">▼</a> -->
+              {% endif %}
+
+              <p style="font-weight:bold;">
+                <a href="{{ post.get_absolute_url }}">
+                  {{ post.title }}
+                </a>
+              </p>
+              <p class="story-info"
+                 style="font-size:12px;color:gray;text-align:right;/* margin:5px 10px; */float: left;margin-left: 0;">
+                <span class="post-rating"
+                style="font-size:12px;color:gray;text-align:right;
+                float: left;margin-right: 4px;
+                {% if post in liked_posts%}
+                font-weight:bold;
+                {% endif %}
+                " >{{ post.rating }}</span> points | 
+                {{ post.children|count_replies }} |
+                author: {{ post.author }} |
+                category: {{ post.category }} |
+                {{ post.created_at|age }}
+              </p>
+            </td>
+            <td >
+              <a class="button"
+                 style="margin: 5;" href="{{ post.get_absolute_url }}">VIEW</a>
+            </td>
+          </tr>
+          {% endfor %}
+      </div>
+      </table>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
